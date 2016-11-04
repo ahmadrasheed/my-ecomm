@@ -1,0 +1,10 @@
+kali => camera = 75%
+servers => Router = 66.67%
+Router => servers = 80%
+keyboard => camera = 50%
+keyboard => screen = 50%
+screen => camera = 50%
+screen => keyboard = 50%
+screen,keyboard => camera = 66.67%
+screen,camera => keyboard = 66.67%
+keyboard,camera => screen = 66.67%

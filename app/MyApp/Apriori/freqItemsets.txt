@@ -1,0 +1,3 @@
+{bread,caco} = 2
+{Milk,caco,tea} = 2
+{caco,milk,keesh} = 2

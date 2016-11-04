@@ -1,0 +1,4 @@
+{screen,Router} = 2
+{kali,camera} = 3
+{Router,servers} = 4
+{screen,keyboard,camera} = 2

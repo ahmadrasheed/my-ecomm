@@ -1,0 +1,14 @@
+bread => caco = 66.67%
+tea => caco = 100%
+tea => Milk = 100%
+tea => Milk,caco = 100%
+Milk => tea = 50%
+Milk => caco = 75%
+Milk => caco,tea = 50%
+Milk,caco => tea = 66.67%
+Milk,tea => caco = 100%
+caco,tea => Milk = 100%
+keesh => milk = 66.67%
+milk => keesh = 100%
+caco,milk => keesh = 100%
+caco,keesh => milk = 66.67%
