@@ -25,7 +25,9 @@
 
   ga('create', 'UA-86789697-1', 'auto');
   ga('send', 'pageview');
-
+        var USER_ID="199";
+  ga('set', 'userId', USER_ID ); // Set the user ID using signed-in user_id.
+  ga('send', 'pageview');
 </script>
 
     @yield('styles')
