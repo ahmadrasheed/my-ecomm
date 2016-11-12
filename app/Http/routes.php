@@ -160,7 +160,7 @@ Route::get('/products-search_index',[
     'as'=>'Apriori'
 ]);
      
-    
+// ========================================= for Google Analytics ==================
 
-
+Route::get('google-analytics-summary',array('as'=>'google-analytics-summary','uses'=>'HomeController@getAnalyticsSummary'));
 

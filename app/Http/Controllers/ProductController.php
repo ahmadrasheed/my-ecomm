@@ -23,6 +23,24 @@ class ProductController extends Controller
 {
     public function getIndex()
     {
+        
+        /*only for google analytics API test*/
+        
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+/*        -----------------------------------------*/
+        
+        
+        
+        
         $products = Product::paginate(6);
         
         

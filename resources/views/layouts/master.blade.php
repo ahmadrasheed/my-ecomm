@@ -31,8 +31,13 @@
 </script>
 
     @yield('styles')
+    
+{!! Analytics::render() !!}  <!--add to get google analytics api info -->   
+    
+    
 </head>
 <body>
+{!! Analytics::render() !!}
 
 
 @include('partials.header')

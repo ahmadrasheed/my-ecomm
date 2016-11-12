@@ -17,6 +17,7 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
+        'cf150f72bd303a2ff07711c9a70f2d53' => __DIR__ . '/..' . '/google/apiclient/src/Google/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -56,6 +57,7 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
         'P' => 
         array (
             'Psy\\' => 4,
+            'Psr\\Log\\' => 8,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -182,6 +184,10 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -231,10 +237,6 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
     public static $prefixesPsr0 = array (
         'P' => 
         array (
-            'Psr\\Log\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/psr/log',
-            ),
             'Prophecy\\' => 
             array (
                 0 => __DIR__ . '/..' . '/phpspec/prophecy/src',
@@ -256,6 +258,13 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
             'JakubOnderka\\PhpConsoleColor' => 
             array (
                 0 => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src',
+            ),
+        ),
+        'I' => 
+        array (
+            'Ipunkt\\LaravelAnalytics\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src',
             ),
         ),
         'D' => 
@@ -287,6 +296,7 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
         'App\\Http\\Controllers\\CategoriesController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriesController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DataMiningController' => __DIR__ . '/../..' . '/app/Http/Controllers/DataMiningController.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -1391,6 +1401,17 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
         'Illuminate\\View\\View' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/View.php',
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Ipunkt\\LaravelAnalytics\\AnalyticsFacade' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/AnalyticsFacade.php',
+        'Ipunkt\\LaravelAnalytics\\AnalyticsServiceProvider' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/AnalyticsServiceProvider.php',
+        'Ipunkt\\LaravelAnalytics\\Contracts\\AnalyticsProviderInterface' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/Contracts/AnalyticsProviderInterface.php',
+        'Ipunkt\\LaravelAnalytics\\Contracts\\TrackingBagInterface' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/Contracts/TrackingBagInterface.php',
+        'Ipunkt\\LaravelAnalytics\\Data\\Campaign' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/Data/Campaign.php',
+        'Ipunkt\\LaravelAnalytics\\Data\\Event' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/Data/Event.php',
+        'Ipunkt\\LaravelAnalytics\\Data\\Renderer\\CampaignRenderer' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/Data/Renderer/CampaignRenderer.php',
+        'Ipunkt\\LaravelAnalytics\\Data\\Renderer\\Renderer' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/Data/Renderer/Renderer.php',
+        'Ipunkt\\LaravelAnalytics\\Providers\\GoogleAnalytics' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/Providers/GoogleAnalytics.php',
+        'Ipunkt\\LaravelAnalytics\\Providers\\NoAnalytics' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/Providers/NoAnalytics.php',
+        'Ipunkt\\LaravelAnalytics\\TrackingBag' => __DIR__ . '/..' . '/ipunkt/laravel-analytics/src/Ipunkt/LaravelAnalytics/TrackingBag.php',
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
@@ -1432,6 +1453,7 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
         'League\\Flysystem\\Plugin\\PluginNotFoundException' => __DIR__ . '/..' . '/league/flysystem/src/Plugin/PluginNotFoundException.php',
         'League\\Flysystem\\ReadInterface' => __DIR__ . '/..' . '/league/flysystem/src/ReadInterface.php',
         'League\\Flysystem\\RootViolationException' => __DIR__ . '/..' . '/league/flysystem/src/RootViolationException.php',
+        'League\\Flysystem\\SafeStorage' => __DIR__ . '/..' . '/league/flysystem/src/SafeStorage.php',
         'League\\Flysystem\\UnreadableFileException' => __DIR__ . '/..' . '/league/flysystem/src/UnreadableFileException.php',
         'League\\Flysystem\\Util' => __DIR__ . '/..' . '/league/flysystem/src/Util.php',
         'League\\Flysystem\\Util\\ContentListingFormatter' => __DIR__ . '/..' . '/league/flysystem/src/Util/ContentListingFormatter.php',
@@ -2423,6 +2445,7 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
         'Stripe\\ApiRequestor' => __DIR__ . '/..' . '/stripe/stripe-php/lib/ApiRequestor.php',
         'Stripe\\ApiResource' => __DIR__ . '/..' . '/stripe/stripe-php/lib/ApiResource.php',
         'Stripe\\ApiResponse' => __DIR__ . '/..' . '/stripe/stripe-php/lib/ApiResponse.php',
+        'Stripe\\ApplePayDomain' => __DIR__ . '/..' . '/stripe/stripe-php/lib/ApplePayDomain.php',
         'Stripe\\ApplicationFee' => __DIR__ . '/..' . '/stripe/stripe-php/lib/ApplicationFee.php',
         'Stripe\\ApplicationFeeRefund' => __DIR__ . '/..' . '/stripe/stripe-php/lib/ApplicationFeeRefund.php',
         'Stripe\\AttachedObject' => __DIR__ . '/..' . '/stripe/stripe-php/lib/AttachedObject.php',
@@ -2461,6 +2484,7 @@ class ComposerStaticInitcd74b1aafb3cb591d5df999fc9eaebab
         'Stripe\\Refund' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Refund.php',
         'Stripe\\SKU' => __DIR__ . '/..' . '/stripe/stripe-php/lib/SKU.php',
         'Stripe\\SingletonApiResource' => __DIR__ . '/..' . '/stripe/stripe-php/lib/SingletonApiResource.php',
+        'Stripe\\Source' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Source.php',
         'Stripe\\Stripe' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Stripe.php',
         'Stripe\\StripeObject' => __DIR__ . '/..' . '/stripe/stripe-php/lib/StripeObject.php',
         'Stripe\\Subscription' => __DIR__ . '/..' . '/stripe/stripe-php/lib/Subscription.php',
