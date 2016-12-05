@@ -7,8 +7,8 @@
     class HomeController extends Controller
     {
        public function getAnalyticsSummary(Request $request){
-            $from_date = date("Y-m-d", strtotime($request->get('from_date',"7 days ago")));
-            $to_date = date("Y-m-d",strtotime($request->get('to_date',$request->get('from_date','today')))) ; 
+            $from_date = date("Y-m-d", strtotime($request->get('from_date',"30 days ago")));
+            $to_date = date("Y-m-d",strtotime($request->get('to_date',$request->get('from_date','2016-12-05')))) ; 
             $gAData = $this->gASummary($from_date,$to_date) ;
             return $gAData;
         }
@@ -28,29 +28,46 @@
             if($client->getAuth()->isAccessTokenExpired()) {
                 $client->getAuth()->refreshTokenWithAssertion($cred);
             }
+            
             $optParams = [
-                'dimensions' => 'ga:date,ga:country',
-                'sort'=>'-ga:date'
-            ] ;       
+                'dimensions' => 'ga:dimension2,ga:pagePath,ga:country',
+                /*'sort'=>'-ga:date'*/
+                /*'sort'=>'ga:pagePath'*/
+            ] ; 
+            
             $results = $analytics->data_ga->get(
-               'ga:132964552',
+               'ga:132964552', 
                $date_from,
                $date_to,
-               /*'ga:sessions,ga:users,ga:pageviews,ga:bounceRate,ga:hits,ga:avgSessionDuration',*/
-               'ga:bounceRate',
+               
+                'ga:users,ga:sessionDuration,ga:pageLoadTime,ga:pageviews,ga:timeOnPage',
                $optParams
                );
                 
+            
+            
+            /* 'ga:sessions,ga:users,ga:pageviews,ga:bounceRate,ga:hits,ga:avgSessionDuration,                ga:bounceRate',
+            */
+            
+            
+          
+            
                 $rows = $results->getRows();
+                //dd($rows);
                 $rows_re_align = [] ;
                 foreach($rows as $key=>$row) {
                     foreach($row as $k=>$d) {
                         $rows_re_align[$k][$key] = $d ;
                     }
-                }           
+                }   
+            
+            
                 $optParams = array(
                             'dimensions' => 'rt:medium'
                     );
+            
+            
+            
                 try {
                   $results1 = $analytics->data_realtime->get(
                       'ga:132964552',
@@ -61,11 +78,16 @@
                   // Handle API service exceptions.
                   $error = $e->getMessage();
                 }
+            
                 $active_users = $results1->totalsForAllResults ;
-                return [
+            
+            
+            
+                return view('myGoogle.getGoogle', [
+                   
                     'data'=> $rows_re_align ,
-                   /* 'summary'=>$results->getTotalsForAllResults(),*/
+                    /*'summary'=>$results->getTotalsForAllResults(),*/
                    /* 'active_users'=>$active_users['rt:activeUsers']*/
-                    ] ;
+                    ]) ;
         }
     }

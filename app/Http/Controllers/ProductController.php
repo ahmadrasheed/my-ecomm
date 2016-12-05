@@ -23,34 +23,17 @@ class ProductController extends Controller
 {
     public function getIndex()
     {
-        
-        /*only for google analytics API test*/
-        
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
-/*        -----------------------------------------*/
-        
-        
-        
+    
         
         $products = Product::paginate(6);
         
         
-          /*to display recommend products for a specific user according to a priori table*/
+    /*to display recommend products for a specific user according to a priori table*/
          $recomended_products=null;
+        
+       
         if (Auth::check()) {
-                // The user is logged in...
-            $userId = Auth::id();
-            
-            
+            $userId = Auth::id(); // The user is logged in... 
             $transaction=new Transaction(); // to send it to search in it for recommended products
             $pi_product=new pi_product();
             $products_obj=new Product();
@@ -61,7 +44,9 @@ class ProductController extends Controller
             Recommend::get_recommended_products($products_obj);
             
             $recommended_items=Recommend::$recommended_items;
-            return view('shop.index', ['products' => $products ,'recommended_items'=>$recommended_items]);
+            return view('shop.index', ['products' => $products ,'recommended_items'=>$recommended_items,
+                                      
+                                      ]);
             }
       
         
