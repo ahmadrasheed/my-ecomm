@@ -30,7 +30,7 @@
             }
             
             $optParams = [
-                'dimensions' => 'ga:dimension2,ga:pagePath,ga:country',
+                'dimensions' => 'ga:mobileDeviceBranding,ga:pagePath,ga:country',
                 /*'sort'=>'-ga:date'*/
                 /*'sort'=>'ga:pagePath'*/
             ] ; 

@@ -44,12 +44,13 @@
                         
                             /*passing php variable to javascript*/
                     
-              ga('set', 'userId',USER_ID); /*  Set the user ID using signed-in user_id. */
+            ga('set', 'userId',USER_ID); /*  Set the user ID using signed-in user_id. */
         
         
-                // Set value for custom dimension at index 1.
+             // Set value for custom dimension at index 1.
              //var dimensionValue = 'algeboory';
              ga('set', 'dimension1', USER_ID);
+             ga('set', 'dimension2', USER_ID);
         
         
         
