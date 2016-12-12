@@ -11,7 +11,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('product.index') }}"><img src="{{URL::to('logo.png')}}"  class="logo"></a>
+            <a class="navbar-brand" href="{{ route('product.index') }}"><!--<img src="{{URL::to('')}}"  class="logo">--></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,14 +25,22 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="{{ route('product.shoppingCart') }}">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    
+    
+
+                          {{ trans('messages.cart') }} <!--using the language feature, locale-->
+                         
                         <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQty : '' }}</span>
                     </a>
                 </li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span
+                       aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i>
+                               
+                                  {{ trans('messages.user-management') }}
+                                  <span
                                 class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @if(Auth::check())
@@ -41,16 +49,16 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ route('user.logout') }}">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
-                                    Logout</a></li>
+                                      {{ trans('messages.logout') }}</a></li>
                         @else
                             <li><a href="{{ route('user.signup') }}"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                                    Signup</a></li>
+                                      {{ trans('messages.sign-in') }}</a></li>
                             <li><a href="{{ route('user.signin') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>
-                                    Signin</a></li>
+                                      {{ trans('messages.sign-up') }}</a></li>
 
                         @endif
                             <li><a href="{{ route('categories.index') }}"><i class="fa fa-database" aria-hidden="true"></i>
-                                    Admin Control</a>
+                                      {{ trans('messages.admin') }}</a>
 
 
                             </li>
@@ -62,4 +70,3 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-

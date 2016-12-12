@@ -18,6 +18,7 @@ use Stripe\Stripe;
 use App\Transaction;
 use App\Recommend;
 use App\pi_product;
+use App\Gmvisit;
 
 class ProductController extends Controller
 {
@@ -26,6 +27,15 @@ class ProductController extends Controller
     
         
         $products = Product::paginate(6);
+        
+        /*to display most visited products */
+        $gmv=Gmvisit::orderBy('hits', 'desc')->take(5)->get(); //this will get only the id of the products
+        
+        $gmv_products=array();
+            foreach($gmv as $p)
+                $gmv_products[]=Product::find($p->product_id); 
+        
+        
         
         
     /*to display recommend products for a specific user according to a priori table*/
@@ -44,15 +54,37 @@ class ProductController extends Controller
             Recommend::get_recommended_products($products_obj);
             
             $recommended_items=Recommend::$recommended_items;
-            return view('shop.index', ['products' => $products ,'recommended_items'=>$recommended_items,
+            return view('shop.index', [
+                
+                    'products' => $products,
+                    'recommended_items'=>$recommended_items, 
+                    'gmv_products'=>$gmv_products
                                       
                                       ]);
             }
       
         
-        return view('shop.index', ['products' => $products]);
+        return view('shop.index', [
+            
+            'products' => $products,
+            'gmv_products'=>$gmv_products
+        
+        ]);
         
        
+    }
+    
+    
+    public function getDetails(Request $request, $id)
+    {
+        
+        $productD = Product::find($id);
+        //dd($product);
+        
+        return view('shop.details', ['productD' => $productD]);
+        
+        
+        
     }
 
     public function getAddToCart(Request $request, $id)

@@ -48,6 +48,11 @@
 
 }
 
+/*to remove the black shadow of the carosuel of the two sides  by ahmad rasheed*/
+.carousel-control.right, .carousel-control.left {
+  background-image:none;
+}
+
 
 @media (max-width:550px) {
     #carouselContainer {

@@ -52,6 +52,23 @@
              ga('set', 'dimension1', USER_ID);
              ga('set', 'dimension2', USER_ID);
         
+          
+            var productId=<?php 
+                if(isset ($productD->id))
+                    
+                    echo $productD->id;
+                
+                ?>
+    
+                
+        /*console.log(productId);*/        
+                
+                
+        if (typeof productId !== 'undefined') {
+            ga('set', 'dimension3', productId);
+            
+        }
+        
         
         
         
@@ -63,17 +80,40 @@
 {!! Analytics::render() !!}  <!--add to get google analytics api info -->   
     
    
-    
+   
 </head>
 <body>
-{!! Analytics::render() !!}
+      <?php 
+                        // to detect browser preferred language using php to change the locale varibale
+                        
+                               $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+                                    switch ($lang){
+                                        case "ar":
+                                            //echo "PAGE FR";
+                                            App::setLocale('ar'); /* set the defualt language to Arabic*/
+                                            
+                                            break;
+                                        case "it":
+                                            //echo "PAGE IT";
+                                            App::setLocale('it'); /* set the defualt language to Italy*/
+                                            
+                                            break;
+                                        case "en":
+                                            //echo "PAGE EN";
+                                            App::setLocale('en'); /* set the defualt language to English*/
+                                            
+                                            break;        
+                                        default:
+                                           App::setLocale('en'); /* set the defualt language to English*/
+                                    }
+                        
+                            ?>
 
+
+{!! Analytics::render() !!}
 
 @include('partials.header')
 <div class="container">
-
-
-
 
 <div class="container">
     @yield('content')

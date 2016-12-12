@@ -71,6 +71,9 @@
                                 <div class="pull-left price">${{ $product->price }}</div>
                                 <a href="{{ route('product.addToCart', ['id' => $product->id]) }}"
                                    class="btn btn-success pull-right" role="button">Add to Cart</a>
+                                   &nbsp;&nbsp;&nbsp;
+                                   <a href="{{ route('product.details', ['id' => $product->id]) }}"
+                                   class="btn btn-warning pull-right" role="button">details</a>
                             </div>
                         </div>
                     </div>
@@ -84,16 +87,51 @@
     
     
 <hr>
-<hr>    
+<!--------------------------------adding data from the most visited products -------------------->
+
+    <!--recommending products for the most visited products ------------------------------->
+ 
+@if(!empty($gmv_products))    
+<p><ul><h4 style="color:Orange;"><b>Most visited Products</b></h4></ul></p>
+        
+        <div class="row"> 
+               @foreach($gmv_products as $product)
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="{{ $product->imagePath }}" alt="..." class="img-responsive">
+                        <div class="caption">
+                            <h3>{{ $product->title }}</h3>
+                            <p class="description">{{ $product->description }}</p>
+                            <div class="clearfix">
+                                <div class="pull-left price">${{ $product->price }}</div>
+                                <a href="{{ route('product.addToCart', ['id' => $product->id]) }}"
+                                   class="btn btn-success pull-right" role="button">Add to Cart</a>
+                                   &nbsp;&nbsp;&nbsp;
+                                   <a href="{{ route('product.details', ['id' => $product->id]) }}"
+                                   class="btn btn-warning pull-right" role="button">details</a>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+                @endforeach
+        
+        </div>
+    
+  @endif
+    
+    
+<hr>
+
+<!--------------------------------------------------------------------------------------------->
+
+
+
+
+
 <p ><ul><h3 style="color:Orange;">products from DB</h3></ul></p>   
     
-    
-    
-    
-    
-    
-    
-    
+  
 <!--  ------------ displaying products from the databse  without recommending------------------->
     @foreach($products->chunk(3) as $productChunk)
         <div class="row">
