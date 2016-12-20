@@ -8,7 +8,7 @@
 @include('partials.carousel')
    <!--recommending products for the logged in user--------------------------------------------->
    
-<p><ul><h4 style="color:Orange;"><b>Recommended for you</b></h4></ul></p>
+<p><ul><h4 style="color:Orange;"><b>about the product</b></h4></ul></p>
         
         <div class="row">
            
@@ -40,7 +40,7 @@
     
 <hr>
 <hr>    
-<p ><ul><h3 style="color:Orange;">products from DB</h3></ul></p>   
+<p ><ul><h3 style="color:Orange;"><a href={{ route('product.index') }}> back to main page</a></h3></ul></p>   
     
     
 

@@ -7,6 +7,21 @@
 <body style="font-family: monospace;">
 <?php  
 
+    
+    
+    // not used by me ................... the used one is in views/apriori
+    
+    //////////
+    ////////////////
+    /////////////////////
+    ////////////////////////////
+    /////////////////////////////////
+    
+    
+    
+    
+    
+    
 //use App\MyApp\Apriori\class.apriori;
 ///////////////////////////////////above by Me //////////////////
 include 'class.apriori.php';

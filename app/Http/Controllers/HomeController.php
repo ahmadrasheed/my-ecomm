@@ -3,7 +3,7 @@
     use Illuminate\Http\Request;
     use App\Http\Controllers\Controller;
     use App\Gmvisit;
-
+    use App\Gproduct;
 
     class HomeController extends Controller
     {
@@ -63,7 +63,7 @@
             
             
             
-             //
+            // ////////////////////////////////////////////////////////////////////////////
             //
             //to store the most visited product from google to be saved in my Db
             //==============================================================================
@@ -118,7 +118,64 @@
             
             // ==============================================
             
+         
             
+            
+            // ////////////////////////////////////////////////////////////////////////////
+            //
+            //to store all google data about products and countries 
+            /////////////////////////////////////////////////////////////////////////////////
+            
+            
+            $optParams = [
+                'dimensions' => 'ga:dimension3,ga:country',
+                /*'sort'=>'-ga:date'*/
+                /*'sort'=>'ga:pagePath'*/
+            ] ; 
+            
+             $results = $analytics->data_ga->get(
+               'ga:132964552', 
+               $date_from,
+               "today",              /*very necessary to put the date here*/
+               
+                'ga:hits',
+               $optParams
+               );
+              $rows = $results->getRows();
+               
+                $rows_re_align = [] ;
+                foreach($rows as $key=>$row) {
+                    foreach($row as $k=>$d) {
+                        $rows_re_align[$k][$key] = $d ;
+                    }
+                } 
+         
+           
+            
+            
+   /* for($i=0;$i<count($rows[0]);$i++) {
+ 
+          for($j=0;$j<count($rows);$j++) {
+                        
+                        $gmv=new Gmvisit();
+                        $gmv->product_id=$rows[$j][$i];
+                        $gmv->hits=$rows[$j][$i+1];
+                        $gmv->save(); 
+          }}*/
+            
+            
+            foreach ($rows as $row) {
+                        $gproduct=new Gproduct();
+                        $gproduct->product_id=$row[0];
+                        $gproduct->country=$row[1];
+                        
+                        $gproduct->save(); 
+                    
+                    }
+            
+            
+            
+            // //////////////////////////////==========End==================/////////////////////////
             
             
             

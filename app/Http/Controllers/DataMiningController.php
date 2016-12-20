@@ -19,6 +19,12 @@ class DataMiningController extends Controller
     
     
     
+      public function getAprioriByCountry()
+    {
+        
+        return view('apriori.example_c2',['country'=>$country]);
+    }
+    
     
     
     

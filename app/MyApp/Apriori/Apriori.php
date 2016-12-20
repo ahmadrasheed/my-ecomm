@@ -14,7 +14,7 @@ namespace App\MyApp\Apriori;
  * 
  * '-)
  */
-
+//////////////////// this is the real Algorithm ////////////////by ahmad
 
 class Apriori {
     private $delimiter   = ','; 
@@ -393,7 +393,7 @@ class Apriori {
        $this->arTime = $this->startTimer();
         
         
-        print_r($db);
+       // print_r($db);
         
       
        foreach($this->freqItmsts as $k => $v)

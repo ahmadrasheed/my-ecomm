@@ -53,7 +53,7 @@
     
 
    
-    <!--recommending products for the logged in user--------------------------------------------->
+   <!--recommending products for the logged in user--------------------------------------------->
 @if(!empty($recommended_items))    
 <p><ul><h4 style="color:Orange;"><b>Recommended for you</b></h4></ul></p>
         
@@ -87,6 +87,49 @@
     
     
 <hr>
+
+    <!--recommending products for the logged in user from by country --------------------------------------------->
+@if(!empty($recommended_items2)) 
+
+<p><ul><h4 style="color:Orange;"><b>Recommended for you from your country</b></h4></ul></p>
+        
+        <div class="row">
+            @foreach($recommended_items2 as $item)
+               
+               @foreach($item as $product)
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <img src="{{ $product->imagePath }}" alt="..." class="img-responsive">
+                        <div class="caption">
+                            <h3>{{ $product->title }}</h3>
+                            <p class="description">{{ $product->description }}</p>
+                            <div class="clearfix">
+                                <div class="pull-left price">${{ $product->price }}</div>
+                                <a href="{{ route('product.addToCart', ['id' => $product->id]) }}"
+                                   class="btn btn-success pull-right" role="button">Add to Cart</a>
+                                   &nbsp;&nbsp;&nbsp;
+                                   <a href="{{ route('product.details', ['id' => $product->id]) }}"
+                                   class="btn btn-warning pull-right" role="button">details</a>
+                            </div>
+                        </div>
+                    </div>
+                        
+                </div>
+                @endforeach
+            @endforeach
+        </div>
+    
+  @endif
+    
+    
+<hr>
+
+
+
+
+
+
+
 <!--------------------------------adding data from the most visited products -------------------->
 
     <!--recommending products for the most visited products ------------------------------->

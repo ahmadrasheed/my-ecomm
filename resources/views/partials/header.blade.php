@@ -51,9 +51,10 @@
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                                       {{ trans('messages.logout') }}</a></li>
                         @else
+                            
+                            
+                        <li><a href="{{ route('user.signin') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>{{ trans('messages.sign-in') }}</a></li>
                             <li><a href="{{ route('user.signup') }}"><i class="fa fa-user-plus" aria-hidden="true"></i>
-                                      {{ trans('messages.sign-in') }}</a></li>
-                            <li><a href="{{ route('user.signin') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>
                                       {{ trans('messages.sign-up') }}</a></li>
 
                         @endif

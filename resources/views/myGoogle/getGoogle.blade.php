@@ -1,3 +1,5 @@
+<!--this page is for viewing the data from Google Analytics-->
+
 <html>
 <head>
 <style>
@@ -57,21 +59,12 @@ echo"</table>";
 
 
 
-   
-    
-    
-    
-    
-
  if (Auth::check()) {
                                 $userId = Auth::id(); // The user is logged in... 
                                 echo "the user who is logged in is ". $userId;
                         }
 
 ?>  
-        
-        
-        
         
         
         

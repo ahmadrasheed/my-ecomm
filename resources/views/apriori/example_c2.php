@@ -2,7 +2,7 @@
 <html>
 <head> 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
-	<title>Apriori Alghoritm</title>
+	<title>Apriori Alghoritm for Google Analytics</title>
 </head>
 <body style="font-family: monospace;">
 
@@ -167,19 +167,6 @@ echo "<br>";
 /*=============================================================================================================*/
     
  
-$Apriori2 = new Apriori();
-
-$Apriori2->setMaxScan(20);       //Scan 2, 3, ...
-$Apriori2->setMinSup(2);         //Minimum support 1, 2, 3, ...
-$Apriori2->setMinConf(50);       //Minimum confidence - Percent 1, 2, ..., 100
-$Apriori2->setDelimiter(',');    //Delimiter 
-    
-    
-    
-    
-    
-    
-    
     
     
     $transactions2=gproduct::all();
@@ -189,7 +176,7 @@ $Apriori2->setDelimiter(',');    //Delimiter
         $dataset2[]=array($t['title2']);                              //notice title2
     }
    // dd($dataset); 
-    $Apriori2->process($dataset2);  // send them to apriori
+    $Apriori->process($dataset2);  // send them to apriori
     
     
     
@@ -198,19 +185,19 @@ $Apriori2->setDelimiter(',');    //Delimiter
     
 //Frequent Itemsets
 echo '<h1>Frequent Itemsets</h1>';
-$Apriori2->printFreqItemsets();
+$Apriori->printFreqItemsets();
 
 echo '<h3>Frequent Itemsets Array</h3>';
-print_r($Apriori2->getFreqItemsets()); 
+print_r($Apriori->getFreqItemsets()); 
 
 //Association Rules
 echo '<h1>Association Rules</h1>';
-$Apriori2->printAssociationRules();
+$Apriori->printAssociationRules();
     
     
 ////////////////////////////////////////////////////////////////down//////////////    
     
-$AAA=$Apriori2->getFreqItemsets();
+$AAA=$Apriori->getFreqItemsets();
     
     
 echo "Frequent items ....................................................................<br>"; 
@@ -243,7 +230,7 @@ echo "<hr>";
     /* ======================= saving the results of Apriori algorithm to pi_products table ========== */
     $A2=array();
     
-    $A2=$Apriori2->getAssociationRules();
+    $A2=$Apriori->getAssociationRules();
     
     $exampleEncoded = json_encode($A2);
 
@@ -274,9 +261,18 @@ echo "<br>";
     
     
     
+    
+    
+    
  /*==================================================    End  ================================================*/    
-/*applying Apriori on gProducts(comming from google) table and then saving the results on table Aprior_google-         products */
+/*applying Apriori on gProducts(comming from google) table and then saving the results on table Aprior_google-products */
 /*=============================================================================================================*/   
+    
+    
+    
+    
+    
+    
     
     
     

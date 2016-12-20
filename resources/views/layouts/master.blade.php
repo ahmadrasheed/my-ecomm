@@ -28,23 +28,23 @@
               ga('create', 'UA-86789697-1',{ 'cookieDomain':'auto','cookieExpires':0} );
               ga('send', 'pageview');
                     var USER_ID=1989;/* just random number set by me*/
-                    USER_ID=<?php 
+                    <?php 
                         
                         if (Auth::check()) {
                                 $userId = Auth::id(); // The user is logged in... 
-                                print $userId;
+                                print "USER_ID=".$userId.";";
                         }
                         
                         else print "00000";
                        
                         
-                        ?>;
+                        ?>
                         
                         
                         
                             /*passing php variable to javascript*/
                     
-            ga('set', 'userId',USER_ID); /*  Set the user ID using signed-in user_id. */
+             ga('set', 'userId',USER_ID); /*  Set the user ID using signed-in user_id. */
         
         
              // Set value for custom dimension at index 1.
@@ -53,26 +53,51 @@
              ga('set', 'dimension2', USER_ID);
         
           
-            var productId=<?php 
+        //php code inside javascript code
+            <?php 
                 if(isset ($productD->id))
                     
-                    echo $productD->id;
+                    echo "var productId=".$productD->id.";";
                 
                 ?>
     
-                
-        /*console.log(productId);*/        
-                
-                
-        if (typeof productId !== 'undefined') {
+           
+          if (typeof productId !== 'undefined') {
             ga('set', 'dimension3', productId);
-            
+            console.log(productId); 
         }
         
         
         
         
-              ga('send', 'pageview',{'sessionControl': 'start'});
+        
+           
+        //
+          <?php 
+        
+        
+                if(Session::has('googleProduct')){
+                   
+                     echo "var googleProduct="."'".Session::get('googleProduct')."'".";"; 
+                     //Session::forget('googleProduct');
+                    
+                }
+                   
+        
+                ?>
+        
+        if (typeof googleProduct !== 'undefined') {
+           ga('set', 'dimension4', googleProduct);
+            console.log(googleProduct); 
+        }
+        
+       
+                
+      
+        
+        
+        
+ga('send', 'pageview',{'sessionControl': 'start'});
 </script>
 
     @yield('styles')
@@ -108,6 +133,22 @@
                                     }
                         
                             ?>
+                            
+                            
+                            
+                              <?php 
+                if(isset ($googleProduct)){
+                   echo "<hr><hr><hr><hr>dddddddddddddddddddddd";
+                    echo "var googleProduct=".$googleProduct.";"; 
+                    
+                }
+                   
+        
+                ?>
+                            
+                            
+                            
+                            
 
 
 {!! Analytics::render() !!}
