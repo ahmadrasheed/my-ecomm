@@ -1,0 +1,1 @@
+we can add geolocation as js and put it here, or we can save it in a template and call it in the master.blade.php 
