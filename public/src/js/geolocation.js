@@ -1,5 +1,10 @@
-/*Geolocation with Ajax code*/
+function geolocation(){
+    
+    
 
+
+/*Geolocation with Ajax code*/
+alert("from geolocation"+batteryLevel);
 var country;
 
 
@@ -73,7 +78,7 @@ function errorFunction(){
             
             	// set up jQuery with the CSRF token, or else post routes will fail
 			$.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
-            $.post(url, {payload:'IQ'}, onSuccess);
+            $.post(url, {payload:country}, onSuccess);
             
             
             
@@ -94,9 +99,12 @@ function errorFunction(){
 
         } else {
           alert("No results found");
+             $("#gif").remove(); 
+            
         }
       } else {
         alert("Geocoder failed due to: " + status);
+           $("#gif").remove(); 
       }
     });
   }
@@ -130,16 +138,19 @@ some  ajax  functions implementation below by me
 			}
 			function onSuccess(data, status, xhr)
 			{
+                
 				// with our success handler, we're just logging the data...
 				console.log(data, status, xhr);
 				// but you can do something with it if you like - the JSON is deserialised into an object
 				//console.log(String(data).toUpperCase())
                 //$('#show').append(data[0][0]);	
                 
-                if(data[0][0]!=null){
+                if(data[0]!=null){
                     var x='<p class="hidden"><ul><h4 style="color:Orange;"><b>Recommended by your country</b></h4></ul></p>';
                 $("#geolocation").append(x); 
-                    alert("yes there are some data");
+                    //alert(batteryLevel);
+                    $("#gif").remove(); 
+                   
                     
                 }
                 else {
@@ -194,3 +205,4 @@ some  ajax  functions implementation below by me
 			$('button#get').on('click', onGetClick);
 			$('button#post').on('click', onPostClick);
           
+}

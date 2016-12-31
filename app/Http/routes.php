@@ -16,6 +16,56 @@ Route::get('/', [
     'as' => 'product.index'
 ]);
 
+
+
+
+// just for test         ajax               -----------------
+
+Route::get('/test', [
+    'uses' => 'AjaxController@getIndex',
+    'as' => 'GetAjax'
+]);
+
+
+
+
+Route::post('/create', [
+    'uses' => 'AjaxController@create',
+    'as' => 'createAjax'
+]);
+
+
+
+
+// this is your GET AJAX route
+Route::get('/ajax', function () {
+	// pass back some data
+	$data   = array('value' => 'some data');
+	// return a JSON response
+	return  Response::json($data);
+});
+// this is your POST AJAX route
+Route::post('/ajax/post', function () {
+	// pass back some data, along with the original data, just to prove it was received
+	$data   = array('value' => 'some data', 'input' => Request::input());
+	// return a JSON response
+	return  Response::json($data);
+});
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------
+
+
+
 Route::get('/product-details/{id}', [
     'uses' => 'ProductController@getDetails',
     'as' => 'product.details'

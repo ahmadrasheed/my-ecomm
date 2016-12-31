@@ -30,6 +30,31 @@ use App\MyApp\Apriori\Apriori;
 
 class ProductController extends Controller
 {
+    
+    
+    //for testng ajax
+    public function getIndex2()
+    {
+        
+          //return view('shop.details', ['productD' => $productD]);
+        return view('shop.index2');
+        
+    }
+      public function postTest()
+    {
+        
+          //return view('shop.details', ['productD' => $productD]);
+        return view('shop.test');
+        
+    }
+    
+        public function postAjax(Request $request)
+    {
+        dd($request['name']);
+         return response()->json("ahmad",200);
+        
+    }
+    
     public function getIndex()
     {
     

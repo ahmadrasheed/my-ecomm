@@ -35,7 +35,22 @@
              
         </div>
     
-
+<!--displaying video about the products-->
+   
+   <div class="container">
+    <div class="row">
+       <h4>Watch a video about the products specification:</h4>
+       
+       
+       <iframe id="youtube" width="800" height="400" src="https://www.youtube.com/embed/Q6dsRpVyyWs" frameborder="0" allowfullscreen></iframe>
+    
+   </div> 
+   </div>
+ 
+   <div id="close">close me</div>
+   
+   
+   
     
     
 <hr>

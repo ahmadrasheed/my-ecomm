@@ -1,10 +1,20 @@
 <!doctype html>
 <html lang="en">
 <head>
+   
+    <meta name="csrf-token" content="<?php echo csrf_token() ?>" /> <!--for ajax call-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    
+    
+    
+    @yield('geolocation')
+
+    
+
+   
     
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -15,9 +25,13 @@
     <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/bootstrap-theme.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('js/bootstrap.min.js') }}">
-    <link rel="stylesheet" href="{{ URL::to('js/jquery.min.js') }}">
-    <link rel="stylesheet" href="{{ URL::to('src/css/app.css') }}">
     
+    <link rel="stylesheet" href="{{ URL::to('src/css/app.css') }}">
+ 
+     
+
+    
+     
     <!-- Google Analytics -->
     <script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -39,7 +53,6 @@
                        
                         
                         ?>
-                        
                         
                         
                             /*passing php variable to javascript*/
@@ -68,9 +81,6 @@
         }
         
         
-        
-        
-        
            
         //
           <?php 
@@ -91,14 +101,12 @@
             console.log(googleProduct); 
         }
         
-       
-                
-      
-        
         
         
 ga('send', 'pageview',{'sessionControl': 'start'});
 </script>
+    
+
 
     @yield('styles')
     
@@ -107,6 +115,7 @@ ga('send', 'pageview',{'sessionControl': 'start'});
    
    
 </head>
+<!--have to put the onload function to implement geolocation js code-->
 <body>
       <?php 
                         // to detect browser preferred language using php to change the locale varibale
@@ -145,11 +154,7 @@ ga('send', 'pageview',{'sessionControl': 'start'});
                    
         
                 ?>
-                            
-                            
-                            
-                            
-
+       
 
 {!! Analytics::render() !!}
 
@@ -172,8 +177,28 @@ ga('send', 'pageview',{'sessionControl': 'start'});
 
 
 
-@yield('scripts')
+
+
+<!-- here is battery API code, I put it here to make it the first downloaded and be global scope -->
+    <script src="{{ URL::to('src/js/battery.js') }}"></script>   
+    
+   
+    <!--This is to put he gelocatoin code script of API of google maps.-->
+    
+    <!--my api key      AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM   -->   
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM"></script> 
+    
+    <script src="{{ URL::to('src/js/geolocation.js') }}"></script>
+
+
+
+
+
+
 
 </div>
 </body>
+@yield('scripts')
+
+
 </html>
