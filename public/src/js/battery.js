@@ -69,7 +69,7 @@ function battery(){
            alert("your battery level is:"+batteryLevel);
           console.log("your battery level is:"+batteryLevel);
           // important .....
-          if(batteryLevel>0.97){
+          if(batteryLevel>0.50){
               
             geolocation(); // calling the geolocation api with ajax call  
               

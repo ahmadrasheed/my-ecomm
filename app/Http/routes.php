@@ -25,6 +25,10 @@ Route::get('/test', [
     'uses' => 'AjaxController@getIndex',
     'as' => 'GetAjax'
 ]);
+Route::post('/test', [
+    'uses' => 'AjaxController@postIndex',
+    'as' => 'GetAjax'
+]);
 
 
 
@@ -219,3 +223,16 @@ Route::get('/products-search_index',[
 
 Route::get('google-analytics-summary',array('as'=>'google-analytics-summary','uses'=>'HomeController@getAnalyticsSummary'));
 
+/*====================================== QR code ====================================================*/
+   Route::get('/qr',[
+    'uses'=>'QrController@getIndex',
+    'as'=>'QR'
+]);
+
+/*==QR code : to get details of products by Ajax==*/
+Route::post('/getQR', [
+    'uses' => 'AjaxController@postQR',
+    'as' => 'getQR'
+]);
+
+/*===========================================End of QR=================================================*/

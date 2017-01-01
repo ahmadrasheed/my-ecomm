@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use File;
 use App\Cart;
 use App\Category;
 use App\Product;
@@ -21,17 +22,49 @@ use App\pi_product;
 use App\Gmvisit;
 use App\AprioriG;
 use App\Gproduct;
-
+use Response;
 use App\MyApp\Apriori\Apriori;
 class AjaxController extends Controller
 {
-    public function getIndex()
+    public function getIndex(Request $request)
     {
         //dd('dump');
+        
         return view('test');
     }
 
+        public function postIndex(Request $request)
+    {
+        //dd('dump');
+      //  $QR=$request['QR'];
+      $file = $request->file('image');
+      return view('test',['QR'=>$file]);
+            
+
+            
+     
     
+    }
+    
+    
+           public function postQR(Request $request)
+    {
+      $data=$request->input('payload');
+      $productD = Product::where('title','=',$data)->get();
+        
+     // return view('shop.details', ['productD' => $productD]);
+        return response()->json($productD, 200);
+            
+
+            
+     
+    
+    }
+    
+    
+    
+    
+
     
     public function postMsg()
     {

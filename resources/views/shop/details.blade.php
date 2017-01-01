@@ -8,7 +8,7 @@
 @include('partials.carousel')
    <!--recommending products for the logged in user--------------------------------------------->
    
-<p><ul><h4 style="color:Orange;"><b>about the product</b></h4></ul></p>
+<ul><h4 style="color:Orange;"><p><b>about the product</b></p></h4></ul>
         
         <div class="row">
            

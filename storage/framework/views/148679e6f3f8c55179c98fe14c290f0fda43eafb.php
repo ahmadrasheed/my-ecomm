@@ -6,7 +6,7 @@
 <?php echo $__env->make('partials.carousel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
    <!--recommending products for the logged in user--------------------------------------------->
    
-<p><ul><h4 style="color:Orange;"><b>about the product</b></h4></ul></p>
+<ul><h4 style="color:Orange;"><p><b>about the product</b></p></h4></ul>
         
         <div class="row">
            
