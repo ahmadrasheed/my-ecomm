@@ -215,15 +215,8 @@ $(document).ready(function(){
                  
                 
             });
-                
-                 
-            
-    
-    
+
             }
-    
-    
-    
     
     
     </script>

@@ -37,7 +37,7 @@ document.addEventListener('visibilitychange', function () {
 
 
 
-
+/*======================================= battery API by W3C ==============================*/
 
 
 
@@ -59,6 +59,7 @@ function battery(){
         
         
       console.log("battery API is excuting....");
+    
       function updateBatteryStatus(battery) {
     /*    document.querySelector('#charging').textContent = battery.charging ? 'charging' : 'not charging';
         document.querySelector('#level').textContent = battery.level;
@@ -66,9 +67,10 @@ function battery(){
           
           
           batteryLevel=battery.level;
-           alert("your battery level is:"+batteryLevel);
+          alert("your battery level is:"+batteryLevel);
           console.log("your battery level is:"+batteryLevel);
-          // important .....
+          
+          // important ........  ... .....
           if(batteryLevel>0.50){
               
             geolocation(); // calling the geolocation api with ajax call  
@@ -78,7 +80,7 @@ function battery(){
               console.log("sorry, ajax call is not recommended due to your battery level");
               
           $('#gif').fadeOut();
-          $('.carousel').remove();
+          $('.carousel').remove(); // removing the carousel 
                
           }
           

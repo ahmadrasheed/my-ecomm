@@ -22,6 +22,7 @@ use App\pi_product;
 use App\Gmvisit;
 use App\AprioriG;
 use App\Gproduct;
+use App\interest;
 use Response;
 use App\MyApp\Apriori\Apriori;
 class AjaxController extends Controller
@@ -47,11 +48,37 @@ class AjaxController extends Controller
     }
     
     
-           public function postQR(Request $request)
+    
+   
+    
+  /* for QR code Ajax request, returning details about a specific product to be shown.*/
+    
+        public function postQR(Request $request)
     {
       $data=$request->input('payload');
       $productD = Product::where('title','=',$data)->get();
+            //will get array of objects, I suppose to return only one obj, but then the 
+            //javascript will return error, coz I build my js to retieve array. I'm lazy to 
+            // modify it.
+            
+       $productD2 = Product::where('title','=',$data)->first();
+            //this will get only one object,
+     
+      
+       if (Auth::check()) {
+            //$productD2 = Product::where('title','=',$data)->get();
+            $userId = Auth::id(); // The user is logged in...
+            $tt=new interest();
+            $tt->user_id=$userId;
+            $tt->category_id=$productD2->category_id;
+            $tt->product_id=$productD2->id;
         
+             // for simplicity only, we can make relationship manyTomany instead.
+            
+            $tt->save();
+       
+       }
+       
      // return view('shop.details', ['productD' => $productD]);
         return response()->json($productD, 200);
             

@@ -153,7 +153,8 @@ class ProductController extends Controller
             
            //dd( $recommended_items2);
         
-            
+            $product=Product::where('title','=','bmw')->first();
+            dd($product);
             return view('shop.index', [
                 
                     'products' => $products,

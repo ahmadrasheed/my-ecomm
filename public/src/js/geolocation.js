@@ -4,7 +4,7 @@ function geolocation(){
 
 
 /*Geolocation with Ajax code*/
-alert("from geolocation"+batteryLevel);
+//alert("from geolocation"+batteryLevel);
 var country;
 
 
