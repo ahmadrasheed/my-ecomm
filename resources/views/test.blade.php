@@ -77,7 +77,8 @@ p.helptext2{
       <div class="text-center">
        <div class="col-xs-12 ">
                 <h2><p>لمعرفة تفاصيل كاملة عن هذا المنتج</p></h2>
-                <h3><p>قم بالتقاط صورة لهذا الكود المودود على المنتج</p></h3>
+                <h3><p><a href="/test" class="btn btn-link btn-block">قم بالتقاط صورة لهذا الكود المطبوع على المنتج</a></p></h3>
+                
                 <hr>
         </div>
         </div>
@@ -99,28 +100,18 @@ p.helptext2{
                 </div></div>           
                 <canvas id="qr-canvas" width="1000" height="300"> </canvas> <!--Canvas to draw image -->
 
-
-                <div id="ahmad"></div>
-                <a href="/test">Go Back again... </a>
+                
+                <div id="ahmad"></div><hr>
+                <div class="row clearfix ">
+                  <a href="/test" class="btn btn-success btn-block">Go Back again... </a><br><br>   
+                </div>
+                
             </div>
 
       </div>
 </div>
 
 
-
-
-
-
-<script>
-   
-
-
-    </script>
-    
-    
-    
-    
     
 <script>
 $(document).ready(function(){
@@ -134,19 +125,21 @@ $(document).ready(function(){
             $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
             $.post(url2, {payload:v}, onSuccess);
                 
-                
-                
-                
-                
-                
-                
+            
                 $("#ahmad").append("<p><h2>"+v+"<h2></p>");
         });
     
     
     
+    // to edit the css of some html element, these element I have no control of them, it made by js by the 
+    // developer, that 's why I change it's css by jQeury.
+    $("#imghelp input").addClass("btn btn-danger btn-block");
+    $("#imghelp input").css({"height": '50px',"font-size":'16px',"text-align":'center',"padding":'10px'});
+    $("#out-canvas").css({"width": '200px', "height": '100px'});
+    $('#imghelp').html($('#imghelp').html().replace('Select a file','<b>Take a photo</b>'));
     
-    $("#imghelp input").addClass("btn btn-danger inline-block"); 
+    
+    
         //$("p:first").addClass("intro note");
    
 });
@@ -188,7 +181,7 @@ $(document).ready(function(){
               
                 //$('#row').append().attr('src')=value['imagePath'];
                 
-               
+                var row="<div class='row'>";
                 var p1="<div id='col' class='col-sm-6 col-md-4 col-lg-4'><div class='thumbnail'><img src='";
                 var p2=data[key]['imagePath'];
                 var p2=data[key]['imagePath'];
@@ -202,9 +195,10 @@ $(document).ready(function(){
                 var p9="</div><a href='/add-to-cart/"; 
                 var p10=data[key]['id']; 
                 var p11="' class='btn btn-success pull-right' role='button'>Add to Cart</a> </div> </div> </div></div>";
+                var row2="</div>";
                     
                        
-            var product=p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+p11;
+            var product=row+p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+p11+row2;
            
                 console.log(product);
              // var  html = $.parseHTML( product );
