@@ -24,5 +24,6 @@
                 </div>
             @endforeach
         </div>
+        <a href="{{route('product.index')}}" class="btn btn-primary">Back to main page</a>
     </div>
 @endsection

@@ -30,7 +30,7 @@ class AjaxController extends Controller
     public function getIndex(Request $request)
     {
         //dd('dump');
-        
+
         return view('test');
     }
 
@@ -40,31 +40,31 @@ class AjaxController extends Controller
       //  $QR=$request['QR'];
       $file = $request->file('image');
       return view('test',['QR'=>$file]);
-            
 
-            
-     
-    
+
+
+
+
     }
-    
-    
-    
-   
-    
+
+
+
+
+
   /* for QR code Ajax request, returning details about a specific product to be shown.*/
-    
-        public function postQR(Request $request)
+
+  public function postQR(Request $request)
     {
       $data=$request->input('payload');
       $productD = Product::where('title','=',$data)->get();
-            //will get array of objects, I suppose to return only one obj, but then the 
-            //javascript will return error, coz I build my js to retieve array. I'm lazy to 
+            //will get array of objects, I suppose to return only one obj, but then the
+            //javascript will return error, coz I build my js to retieve array. I'm lazy to
             // modify it.
-            
+
        $productD2 = Product::where('title','=',$data)->first();
             //this will get only one object,
-     
-      
+
+
        if (Auth::check()) {
             //$productD2 = Product::where('title','=',$data)->get();
             $userId = Auth::id(); // The user is logged in...
@@ -72,36 +72,36 @@ class AjaxController extends Controller
             $tt->user_id=$userId;
             $tt->category_id=$productD2->category_id;
             $tt->product_id=$productD2->id;
-        
+
              // for simplicity only, we can make relationship manyTomany instead.
-            
+
             $tt->save();
-       
+
        }
-       
+
      // return view('shop.details', ['productD' => $productD]);
         return response()->json($productD, 200);
-            
 
-            
-     
-    
+
+
+
+
     }
-    
-    
-    
-    
 
-    
+
+
+
+
+
     public function postMsg()
     {
         return view('ajax');
     }
-    
-    
-    
-    
-    
+
+
+
+
+
     public function create(Request $request) {
         //check if its our form
        /* if ( Session::token() !== $request['_token']) {
@@ -117,46 +117,46 @@ class AjaxController extends Controller
         //validate data
         //and then store it in DB
         //.....
-        
-        
+
+
         $data=$request->input('payload');
-        
+
         $response = array(
             'status' => 'success',
             'msg' => 'Setting created successfully',
         );
-        
-        
-        
+
+
+
         $products = Product::all();
-        
+
         $products=gproduct::where('country','=',$data)->take(10)->get();
-        
+
      /*      return view('test', [
-            
+
             'products' => $products
         ]);*/
-        
-        
-        
+
+
+
     //dd("ddddddddddddddddddddddd");
      //return response()->json($products, 200);
        // return $products;
-        
-        
-        
-        
-        
-        /* 
-       
-       
+
+
+
+
+
+        /*
+
+
        this is for test to make recommendation  ==================
-       
-       
+
+
         */
-        
-           
-    
+
+
+
         // implementing Apriori according to user's country, this will be excuted automatically by this control
         //----------------------------------------------------
         // a new class of Apriori with it's setting
@@ -165,144 +165,127 @@ class AjaxController extends Controller
         $Apriori2->setMaxScan(20);       //Scan 2, 3, ...
         $Apriori2->setMinSup(2);         //Minimum support 1, 2, 3, ...
         $Apriori2->setMinConf(50);       //Minimum confidence - Percent 1, 2, ..., 100
-        $Apriori2->setDelimiter(',');    //Delimiter 
-        
+        $Apriori2->setDelimiter(',');    //Delimiter
+
         $data=$request->input('payload');
-        
-        
-        
+
+
+
         $country=$data; //here we can use Geolocation API to be used to indicate the visiter location
             $transactions2=gproduct::where('country','=',$country)->take(1000)->get();  // for not slowing speed
-        
+
             $dataset2= array();
                 foreach($transactions2 as $t){
-                        //array_push($dataset,$t['title']); 
+                        //array_push($dataset,$t['title']);
                         $dataset2[]=array($t['title2']);                              //notice title2
                     }
-        // dd($dataset); 
+        // dd($dataset);
             $Apriori2->process($dataset2);  // send them to apriori
-        
-        // to empty the table and insert new apriori products 
+
+        // to empty the table and insert new apriori products
             AprioriG::truncate(); //the name of the class
-   
-    
+
+
         $A2=array();
-    
+
         $A2=$Apriori2->getAssociationRules();
-            foreach ($A2 as $sectionKey => $lines2) {  
-   
+            foreach ($A2 as $sectionKey => $lines2) {
+
                   foreach ($lines2 as $key => $value) {
-                    $a=new AprioriG();        // to store the results in this table 
+                    $a=new AprioriG();        // to store the results in this table
                     $a->brought=$sectionKey;
                     $a->recommend=$key;
                     $a->confidence=$value;
-                    $a->save();  
+                    $a->save();
 
                   }
             }
-        
-        
-        
-        
+
+
+
+     // ما اعتقد احتاجها هنا بالاي جاكس  ==========can be removed ========
+
         $products = Product::paginate(6);
-        
+
         /*to display most visited products */
         $gmv=Gmvisit::orderBy('hits', 'desc')->take(5)->get(); //this will get only the id of the products
-        
+
         $gmv_products=array();
             foreach($gmv as $p)
-                $gmv_products[]=Product::find($p->product_id); 
+                $gmv_products[]=Product::find($p->product_id);
          $gmv_products=array_unique($gmv_products);
-        
-        
-        
+
+        //=====================================================
+
         /*to display recommend products for a specific user according to a priori table*/
          $recomended_products=null;
-        
-       
+
+
         if (Auth::check()) {
-            $userId = Auth::id(); // The user is logged in... 
-            
+            $userId = Auth::id(); // The user is logged in...
+
             /*preparing the model of tables to be used for recommending globally or by country*/
             $transaction=new Transaction(); // to send it to search it for recommended products
             $pi_product=new pi_product();
             $products_obj=new Product();
             $aprioriG=new AprioriG();
             $gproduct=new Gproduct();
-            
+
             /*--------------------------------------------------*/
-            
-           
+            // here can can remove it from Ajax recommendation.... it is implemented other place.
             // for recommending accroding to global data
             Recommend::bought_user_by_id($transaction, $userId);
             $p=Recommend::$bought_products;
             Recommend::recommend_products($pi_product,$p);
             Recommend::get_recommended_products($products_obj);
-            
+
             $recommended_items=Recommend::$recommended_items;
             //dd($recommended_items);
             /*--------------------------------------------------*/
-            
-            
-           
+
+
+
             /*for recommending from gproducts and AprioriG tables to be by country recommendation*/
             Recommend2::bought_user_by_id($transaction, $userId);//also using transaction table bz I know it's id
+            // above line will get all things user had purchased.
             $pp=Recommend2::$bought_products;
-        
-            Recommend2::recommend_products($aprioriG,$pp);
+
+            Recommend2::recommend_products($aprioriG,$pp);//aprioriG has all the appriori tables that has only iraqis product for instance.
             Recommend2::get_recommended_products($products_obj);//searching in product table
-            
+            //above line, to get full information about the recommended products.
             $recommended_items2=Recommend2::$recommended_items;
-            
+
            //dd( $recommended_items2);
-        
-            
+
+
 /*            return view('shop.index', [
-                
+
                     'products' => $products,
-                    'recommended_items'=>$recommended_items, 
+                    'recommended_items'=>$recommended_items,
                     'gmv_products'=>$gmv_products,
                     'recommended_items2'=>$recommended_items2
-                                      
+
                                       ]);*/
-            
-           
-            
+
+
+
             return response()->json($recommended_items2, 200);
             }
-      
-        
+
+
       /*  return view('shop.index', [
-            
+
             'products' => $products,
             'gmv_products'=>$gmv_products
-        
+
         ]);*/
-        
-       
-    
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
     }
-   
-     
+
+
 }

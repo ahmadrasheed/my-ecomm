@@ -1,21 +1,21 @@
 <!doctype html>
 <html lang="en">
 <head>
-   
+
     <meta name="csrf-token" content="<?php echo csrf_token() ?>" /> <!--for ajax call-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    
-    
-    
+
+
+
+
     @yield('geolocation')
 
-    
 
-   
-    
+
+
+
     <title>@yield('title')</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -25,13 +25,13 @@
     <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/bootstrap-theme.min.css') }}">
     <link rel="stylesheet" href="{{ URL::to('js/bootstrap.min.js') }}">
-    
-    <link rel="stylesheet" href="{{ URL::to('src/css/app.css') }}">
- 
-     
 
-    
-     
+    <link rel="stylesheet" href="{{ URL::to('src/css/app.css') }}">
+
+
+
+
+
     <!-- Google Analytics -->
     <script>
               (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -42,119 +42,119 @@
               ga('create', 'UA-86789697-1',{ 'cookieDomain':'auto','cookieExpires':0} );
               ga('send', 'pageview');
                     var USER_ID=1989;/* just random number set by me*/
-                    <?php 
-                        
+                    <?php
+
                         if (Auth::check()) {
-                                $userId = Auth::id(); // The user is logged in... 
+                                $userId = Auth::id(); // The user is logged in...
                                 print "USER_ID=".$userId.";";
                         }
-                        
+
                         else print "00000";
-                       
-                        
+
+
                         ?>
-                        
-                        
+
+
                             /*passing php variable to javascript*/
-                    
+
              ga('set', 'userId',USER_ID); /*  Set the user ID using signed-in user_id. */
-        
-        
+
+
              // Set value for custom dimension at index 1.
              //var dimensionValue = 'algeboory';
              ga('set', 'dimension1', USER_ID);
              ga('set', 'dimension2', USER_ID);
-        
-          
+
+
         //php code inside javascript code
-            <?php 
+            <?php
                 if(isset ($productD->id))
-                    
+
                     echo "var productId=".$productD->id.";";
-                
+
                 ?>
-    
-           
+
+
           if (typeof productId !== 'undefined') {
             ga('set', 'dimension3', productId);
-            console.log(productId); 
+            console.log(productId);
         }
-        
-        
-           
+
+
+
         //
-          <?php 
-        
-        
+          <?php
+
+
                 if(Session::has('googleProduct')){
-                   
-                     echo "var googleProduct="."'".Session::get('googleProduct')."'".";"; 
+
+                     echo "var googleProduct="."'".Session::get('googleProduct')."'".";";
                      //Session::forget('googleProduct');
-                    
+
                 }
-                   
-        
+
+
                 ?>
-        
+
         if (typeof googleProduct !== 'undefined') {
            ga('set', 'dimension4', googleProduct);
-            console.log(googleProduct); 
+            console.log(googleProduct);
         }
-        
-        
-        
+
+
+
 ga('send', 'pageview',{'sessionControl': 'start'});
 </script>
-    
+
 
 
     @yield('styles')
-    
-{!! Analytics::render() !!}  <!--add to get google analytics api info -->   
-    
-   
-   
+
+{!! Analytics::render() !!}  <!--add to get google analytics api info -->
+
+
+
 </head>
 <!--have to put the onload function to implement geolocation js code-->
 <body>
-      <?php 
+      <?php
                         // to detect browser preferred language using php to change the locale varibale
-                        
+
                                $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
                                     switch ($lang){
                                         case "ar":
                                             //echo "PAGE FR";
                                             App::setLocale('ar'); /* set the defualt language to Arabic*/
-                                            
+
                                             break;
                                         case "it":
                                             //echo "PAGE IT";
                                             App::setLocale('it'); /* set the defualt language to Italy*/
-                                            
+
                                             break;
                                         case "en":
                                             //echo "PAGE EN";
                                             App::setLocale('en'); /* set the defualt language to English*/
-                                            
-                                            break;        
+
+                                            break;
                                         default:
                                            App::setLocale('en'); /* set the defualt language to English*/
                                     }
-                        
+
                             ?>
-                            
-                            
-                            
-                              <?php 
+
+
+
+                              <?php
                 if(isset ($googleProduct)){
                    echo "<hr><hr><hr><hr>dddddddddddddddddddddd";
-                    echo "var googleProduct=".$googleProduct.";"; 
-                    
+                    echo "var googleProduct=".$googleProduct.";";
+
                 }
-                   
-        
+
+
                 ?>
-       
+
 
 {!! Analytics::render() !!}
 
@@ -180,14 +180,14 @@ ga('send', 'pageview',{'sessionControl': 'start'});
 
 
 <!-- here is battery API code, I put it here to make it the first downloaded and be global scope -->
-    <script src="{{ URL::to('src/js/battery.js') }}"></script>   
-    
-   
+    <script src="{{ URL::to('src/js/battery.js') }}"></script>
+
+
     <!--This is to put he gelocatoin code script of API of google maps.-->
-    
-    <!--my api key      AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM   -->   
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM"></script> 
-    
+
+    <!--my api key      AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM   -->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM"></script>
+
     <script src="{{ URL::to('src/js/geolocation.js') }}"></script>
 
 

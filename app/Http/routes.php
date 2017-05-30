@@ -154,7 +154,7 @@ Route::get('/categories',[
 Route::post('/categories',[
     'uses'=>'CategoriesController@postDeleteOrUpdate',
     'as'=>'categories.updateOrdelete'
-    
+
 ]);
 
 Route::post('/categories/add',[
@@ -184,13 +184,17 @@ Route::post('/products',[
     'as'=>'products.updateOrdelete'
 
 ]);
-
+// ==Adding new products ==
+Route::get('/products/add',[
+    'uses'=>'ProductController@getAdd',
+    'as'=>'products.add'
+]);
 
 Route::post('/products/add',[
     'uses'=>'ProductController@postAdd',
     'as'=>'products.add'
 ]);
-
+// ==End Adding new products ==
 /*
 ===============Search===========*/
 
@@ -213,17 +217,18 @@ Route::get('/products-search_index',[
 
 
 // ========================================doing data mining ======================
-    
+
    Route::get('/apriori',[
     'uses'=>'DataMiningController@getApriori',
     'as'=>'Apriori'
 ]);
-     
+
 // ========================================= for Google Analytics ==================
 
 Route::get('google-analytics-summary',array('as'=>'google-analytics-summary','uses'=>'HomeController@getAnalyticsSummary'));
 
 /*====================================== QR code ====================================================*/
+//this page for generating QR image for each products in DB, and save them in a folder called qrcodes.
    Route::get('/qr',[
     'uses'=>'QrController@getIndex',
     'as'=>'QR'

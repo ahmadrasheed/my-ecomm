@@ -1,14 +1,15 @@
 <?php
 
 return [
-    'welcome' => 'أهلا وسهلا بكم',
+    'welcome' =>'مرحباً',
     'cart'    => 'سلة التسوق',
-    'user-management'    => 'قسم ادارة المستخدم',
+    'user-profile'=> 'بروفايلي',
     'login'   => 'تسجيل الدخول',
     'logout'   => 'تسجيل الدخول',
     'sign-in' => 'تسجيل الدخول',
     'sign-up' => 'تسجيل حساب',
-    'user-profile'=> 'بروفايل المستخدم',
-    'admin'   => 'المدير',
-     
+    'admin'=> 'المدير',
+    'user-management'=>'ادارة الموقع',
+    'add-new-products'=>'اضافة منتج جديد',
+    'add-new-category'=>'اضافة قسم جديد',
 ];

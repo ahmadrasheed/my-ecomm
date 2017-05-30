@@ -73,14 +73,14 @@ function battery(){
           // important ........  ... .....
           if(batteryLevel>0.50){
               
-            geolocation(); // calling the geolocation api with ajax call  
+                geolocation(); // calling the geolocation api with ajax call  
               
           }
           else{
               console.log("sorry, ajax call is not recommended due to your battery level");
               
-          $('#gif').fadeOut();
-          $('.carousel').remove(); // removing the carousel 
+              $('#gif').fadeOut();
+              $('.carousel').remove(); // removing the carousel 
                
           }
           
@@ -94,21 +94,24 @@ function battery(){
 
     
       navigator.getBattery().then(function(battery) {
-        // Update the battery status initially when the promise resolves ...
-        updateBatteryStatus(battery);
+          
+            // Update the battery status initially when the promise resolves ...
+            updateBatteryStatus(battery);
 
-        // .. and for any subsequent updates.
-        battery.onchargingchange = function () {
-          updateBatteryStatus(battery);
-        };
+            // .. and for any subsequent updates.
+            battery.onchargingchange = function () {
+              updateBatteryStatus(battery);
+            };
 
-        battery.onlevelchange = function () {
-          updateBatteryStatus(battery);
-        };
+            battery.onlevelchange = function () {
+              updateBatteryStatus(battery);
+            };
 
-        battery.ondischargingtimechange = function () {
-          updateBatteryStatus(battery);
-        };
+            battery.ondischargingtimechange = function () {
+              updateBatteryStatus(battery);
+            };
+           
+          
       });
    
  }

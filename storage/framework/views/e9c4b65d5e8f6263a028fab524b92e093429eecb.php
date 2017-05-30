@@ -24,8 +24,9 @@
     <div class="row">
         <div class="col-sm-12 col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Search for a Product:</div>
+                <div class="panel-heading">Products Management:</div>
                 <div class="panel-body">
+                  <div class="col-sm-6">
                     <div class="list-group">
                         <form class="form-inline" method="get" action="<?php echo e(route('products.search')); ?>">
                             <div class="form-group">
@@ -37,8 +38,12 @@
                             <?php echo e(csrf_field()); ?>
 
                         </form>
+                      </div>
+                    <!-- </div> end col-sm-6 -->
 
-                    </div>
+                </div>
+                <div class="col-sm-6">
+                  <a href="<?php echo e(route('products.add')); ?>"  name="add" class="btn btn-success col-sm-3 ">Add new product </a>
                 </div>
             </div>
 
@@ -68,9 +73,9 @@
                                     <span class="badge"><?php echo e(6); ?></span>
                                     <input type="text" class="form-control " value="<?php echo e($product->title); ?>" name="title" id="name" >
                                     <input type="text" class="form-control " value="<?php echo e($product->price); ?> $" name="price" id="name" size="4">
-                                    
-                                    <textarea name="description"  class="form-control " rows="1" cols="40"><?php echo e($product->description); ?></textarea>          
-                                    
+
+                                    <textarea name="description"  class="form-control " rows="1" cols="40"><?php echo e($product->description); ?></textarea>
+
                                     <button type="submit" name="update" class="btn btn-primary form-control">update</button>
                                     <button type="submit" name="delete" class="btn btn-danger form-control">delete </button>
 
@@ -101,4 +106,5 @@
 
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

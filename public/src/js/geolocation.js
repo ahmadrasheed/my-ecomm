@@ -78,6 +78,7 @@ function errorFunction(){
             
             	// set up jQuery with the CSRF token, or else post routes will fail
 			$.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+            
             $.post(url, {payload:country}, onSuccess);
             
             
@@ -134,7 +135,7 @@ some  ajax  functions implementation below by me
 			{
                 //alert("hello");
 				// we're passing data with the post route, as this is more normal
-				$.post(url, {payload:'IQ'}, onSuccess);
+				//$.post(url, {payload:'IQ'}, onSuccess);
 			}
 			function onSuccess(data, status, xhr)
 			{

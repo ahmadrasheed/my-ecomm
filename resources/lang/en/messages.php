@@ -1,12 +1,16 @@
 <?php
 
 return [
-    'welcome' => 'Welcome to our application',
+    'welcome' => 'Welcome ',
     'cart'    => 'Shopping Cart',
-    'user-management'    => 'User Management',
+    'user-management'=> 'User Management',
     'login'   => 'login',
     'sign-in' => 'Sign In',
     'sign-up' => 'Sign Up',
     'user-profile'=> 'User Profile',
-    
+    'admin'=> 'Admin',
+    'logout'=> 'Logout',
+    'add-new-products'=>'Add New products',
+    'add-new-category'=>'Add New Category',
+
 ];

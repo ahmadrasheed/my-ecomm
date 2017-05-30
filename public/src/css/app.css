@@ -7,15 +7,52 @@
 }
 
 .price {
+    position: absolute;
+    top:14px;
+    left:20px;
     font-weight:bold;
     font-size: 16px;
 }
+
+.badge-success {
+background-color: #398439;
+}
+.badge-info {
+background-color: #ff9933;
+}
+
 
 .fa {
 
     text-shadow: 1px 1px 1px #ccc;
     font-size: 1.1em;
 }
+
+
+img:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+
+  -webkit-filter: blur(1px);
+}
+
+
+
+
+#detail img{
+
+
+      /*max-width: 300px;
+      height: auto;
+      display: block; margin-left: auto; margin-right: auto;*/
+
+}
+#product{
+
+  overflow:hidden;
+
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -54,7 +91,7 @@
 }
 
 
-/*this is to make all columns in the rows are equal in hieght by ahmad 
+/*this is to make all columns in the rows are equal in hieght by ahmad
     by adding the class eaual to the row that contains all the columns
 
 */
@@ -64,7 +101,7 @@
   flex-wrap: wrap;
 }
 
-.equal > div[class*='col-'] {  
+.equal > div[class*='col-'] {
   display: flex;
   flex-direction: column;
 }
@@ -76,18 +113,11 @@
 @media (max-width:550px) {
     #carouselContainer {
         display:none !important;
-    
+
     }
-    
+
     #myCarousel{
         display:none !important;
-        
+
     }
 }
-
-
-
-
-
-
-
