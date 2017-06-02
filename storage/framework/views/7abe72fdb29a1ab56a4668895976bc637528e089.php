@@ -12,13 +12,15 @@
  <!--  to put the path of the route that will serve the ajax call -->
     <script>
         var url="<?php echo e(route('createAjax')); ?>";
-
+// alert(url);
 
     </script>
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <?php echo $__env->make('partials.carousel', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+
 <!----------------------------------------search form ---------------------------------------- -->
 
 
@@ -76,80 +78,83 @@
     <?php endif; ?>
 
 <!------------------to view products according to geolocation of the user using Ajax call-->
-
-  <div class="row" id="geolocation">
+<h3 id='title'></h3>
+  <div class="row equal" id="geolocation">
 
     <div id="gif" class="col-xs-6 col-xs-offset-5">
 
-        <img class="text-center" id="gif" src="ajax-loader.gif" alt="ajax-loader">
+        <img class="text-center img-responsive" width="50px" height="50px" id="gif" src="ajax-loader.gif" alt="ajax-loader">
 
     </div>
 
 
   </div>
+  <hr>
+
+
+
+<!-- hidden div -->
 
 
 
    <!--recommending products for the logged in user--------------------------------------------->
- <?php if(!empty($recommended_items)): ?>)
-<p><ul><h4 style="color:Orange;"><b>Recommended for you</b></h4></ul></p>
-
-        <div class="row equal">
-            <?php foreach($recommended_items as $item): ?>
-
-               <?php foreach($item as $product): ?>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="thumbnail">
-                        <img src="<?php echo e($product->imagePath); ?>" alt="..." class="img-responsive">
-                        <div class="caption">
-                            <h3><?php echo e($product->title); ?></h3>
-                            <p class="description"><?php echo html_entity_decode(str_limit($product->description, $limit = 100, $end = '...   ')); ?></p>
 
 
+   <?php if(!empty($recommended_items)): ?>
 
-                        <hr>
-                               <div class="clearfix">
-                                   <div class="row">
-                                       <div class="col-xs-12 col-sm-4 ">
-                                          <div class="pull-left price">$<?php echo e($product->price); ?></div>
+   <h4 style="color:Orange;"><b>Recommended for you!!</b></h4>
 
-                                       </div>
-                                        <div class="col-xs-12 col-sm-4 ">
-                                           <a href="<?php echo e(route('product.addToCart', ['id' => $product->id])); ?>"
-                                       class="btn btn-success pull-right" role="button">Add to Cart</a>
+           <div class="row equal">
+  <?php foreach($recommended_items as $item): ?>
+                  <?php foreach($item as $product): ?>
+                   <div class="col-sm-6 col-md-4 col-lg-3">
+                       <div class="thumbnail">
+                           <img src="<?php echo e($product->imagePath); ?>" alt="..." class="img-responsive">
+                           <div class="caption">
+                               <h3><?php echo e($product->title); ?></h3>
+                               <div class="description"><?php echo e(strip_tags(str_limit($product->description, $limit = 100, $end = '...   '))); ?>
 
-                                       </div>
+                               </div>
+                                    <div class="clearfix">
+                                  <div class="row">
+                                    <div class="price">
+                                      <span class="badge-success badge">$<?php echo e($product->price); ?></span>
+                                    </div>
+                                       <div class="col-xs-6 col-sm-6 ">
+                                          <a href="<?php echo e(route('product.addToCart', ['id' => $product->id])); ?>"
+                                      class="btn btn-success pull-right" role="button">Add to Cart</a>
 
-                                        <div class=" col-xs-12 col-sm-4 ">
-                                           <a href="<?php echo e(route('product.details', ['id' => $product->id])); ?>"
-                                       class="btn btn-warning pull-right" role="button">details</a>
+                                      </div>
 
-                                       </div>
+                                       <div class="col-xs-6 col-sm-6 ">
+                                          <a href="<?php echo e(route('product.details', ['id' => $product->id])); ?>"
+                                      class="btn btn-warning pull-right" role="button">details</a>
 
-                                   </div>
+                                      </div>
 
-
-                            </div>
-
+                                  </div>
 
 
-                        </div>
+                               </div>
+                           </div>
+                       </div>
+
+                   </div>
+                   <?php endforeach; ?>
+                   <?php endforeach; ?>
+
+           </div>
+
+     <?php endif; ?>
 
 
-                    </div>
 
-                </div>
-                <?php endforeach; ?>
-            <?php endforeach; ?>
-        </div>
-
-  <?php endif; ?>
 
 
 <hr>
 
     <!--recommending products for the logged in user from by country --------------------------------------------->
- <?php if(!empty($recommended_items2)): ?>
+<!--  <?php if(!empty($recommended_items2)): ?>
 
 <p><ul><h4 style="color:Orange;"><b>Recommended for you from your country</b></h4></ul></p>
 
@@ -193,7 +198,7 @@
             <?php endforeach; ?>
         </div>
 
-  <?php endif; ?>
+  <?php endif; ?> -->
 
 
 <hr>
@@ -208,48 +213,16 @@
 
     <!--recommending products for the most visited products ------------------------------->
 
- <?php if(!empty($gmv_products)): ?>
-<p><ul><h4 style="color:Orange;"><b>Most visited Products</b></h4></ul></p>
-
-        <div class="row equal">
-               <?php foreach($gmv_products as $product): ?>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="thumbnail">
-                        <img src="<?php echo e($product->imagePath); ?>" alt="..." class="img-responsive">
-                        <div class="caption">
-                            <h3><?php echo e($product->title); ?></h3>
-                            <p class="description"><?php echo html_entity_decode(str_limit($product->description, $limit = 100, $end = '...   ')); ?></p>
-                                <div class="clearfix">
-                               <div class="row">
-                                   <div class="col-xs-12 col-sm-4 ">
-                                      <div class="pull-left price">$<?php echo e($product->price); ?></div>
-
-                                   </div>
-                                    <div class="col-xs-12 col-sm-4 ">
-                                       <a href="<?php echo e(route('product.addToCart', ['id' => $product->id])); ?>"
-                                   class="btn btn-success pull-right" role="button">Add to Cart</a>
-
-                                   </div>
-
-                                    <div class=" col-xs-12 col-sm-4 ">
-                                       <a href="<?php echo e(route('product.details', ['id' => $product->id])); ?>"
-                                   class="btn btn-warning pull-right" role="button">details</a>
-
-                                   </div>
-
-                               </div>
 
 
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-                <?php endforeach; ?>
+ <!-- here are the code paste in in desktop  -->
 
-        </div>
 
-  <?php endif; ?>
+
+
+
+
 
 
 <hr>
@@ -281,7 +254,9 @@
                          <img src="<?php echo e($product->imagePath); ?>" alt="..." class="img-responsive">
                          <div class="caption">
                              <h3><?php echo e($product->title); ?></h3>
-                             <div class="description"><?php echo e(strip_tags(str_limit($product->description, $limit = 100, $end = '...   '))); ?></div>
+                             <div class="description"><?php echo e(strip_tags(str_limit($product->description, $limit = 100, $end = '...   '))); ?>
+
+                             </div>
                                   <div class="clearfix">
                                 <div class="row">
                                   <div class="price">
@@ -312,15 +287,6 @@
          </div>
 
    <?php endif; ?>
-
-
-
-
-
-
-
-
-
 
 
 

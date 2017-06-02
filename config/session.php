@@ -26,12 +26,12 @@ return [
     | Here you may specify the number of minutes that you wish the session
     | to be allowed to remain idle before it expires. If you want them
     | to immediately expire on the browser closing, set that option.
-    |
+    |  ahmad changed expire_on_close and lifetime
     */
 
-    'lifetime' => 120,
+    'lifetime' => 400,
 
-    'expire_on_close' => false,
+    'expire_on_close' => true,
 
     /*
     |--------------------------------------------------------------------------

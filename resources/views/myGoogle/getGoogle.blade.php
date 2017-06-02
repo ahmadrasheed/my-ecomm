@@ -18,29 +18,29 @@ td, th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
-    
+
 table#t01 th {
     background-color: black;
     color: white;
 }
-    
+
 </style>
 </head>
 <body>
 
 <table  id="t01">
   <tr>
-   <th>user</th>
-    <th>page path</th>
+    <th>product</th>
     <th>Country</th>
-    <th>Number of users</th>
+    <th>hits</th>
+    <!-- <th>Number of users</th>
     <th>session duration</th>
     <th>Time to load page</th>
     <th>No. of page views</th>
-    <th>seconds</th>
-    
-    
-  </tr>      
+    <th>seconds</th> -->
+
+
+  </tr>
 <?php
 
 echo " Google Analytics for users data <br><hr>";
@@ -49,31 +49,27 @@ echo " Google Analytics for users data <br><hr>";
       echo('<tr>');
           for($j=0;$j<count($data);$j++) {
             echo('<td>' . $data[$j][$i] . '</td>');
-            
-          } 
+
+          }
 echo('</tr>');
-    
-    }  
-   
+
+    }
+
 echo"</table>";
 
 
 
  if (Auth::check()) {
-                                $userId = Auth::id(); // The user is logged in... 
+                                $userId = Auth::id(); // The user is logged in...
                                 echo "the user who is logged in is ". $userId;
                         }
 
-?>  
-        
-        
-        
+?>
+
+
+
     </body>
-    
-    
-    
+
+
+
 </html>
-
-
-
-

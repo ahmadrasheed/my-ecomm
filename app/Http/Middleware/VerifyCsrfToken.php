@@ -12,7 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-
       '/products/add',
       'products',
       '/categories/add',
@@ -34,11 +33,6 @@ class VerifyCsrfToken extends BaseVerifier
       '/remove/{id}',
       '/add-to-cart/{id}',
       '/product-details/{id}',
-    
-
-
-
-
-        //
+      //
     ];
 }

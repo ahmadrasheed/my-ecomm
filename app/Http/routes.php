@@ -32,12 +32,16 @@ Route::post('/test', [
 
 
 
-
+// run by ajax after getting geolocation of visitor and run recommedation and send result to index
 Route::post('/create', [
     'uses' => 'AjaxController@create',
     'as' => 'createAjax'
 ]);
-
+  //for test only
+// Route::get('/get', [
+//     'uses' => 'AjaxController@create',
+//     'as' => 'createAjax'
+// ]);
 
 
 
@@ -226,6 +230,11 @@ Route::get('/products-search_index',[
 // ========================================= for Google Analytics ==================
 
 Route::get('google-analytics-summary',array('as'=>'google-analytics-summary','uses'=>'HomeController@getAnalyticsSummary'));
+
+//===============================================================================================
+
+
+
 
 /*====================================== QR code ====================================================*/
 //this page for generating QR image for each products in DB, and save them in a folder called qrcodes.

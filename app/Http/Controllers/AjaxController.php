@@ -13,6 +13,7 @@ use Session;
 use Auth;
 
 
+
 use Stripe\Charge;
 use Stripe\Stripe;
 use App\Transaction;
@@ -20,6 +21,8 @@ use App\Recommend;
 use App\Recommend2;
 use App\pi_product;
 use App\Gmvisit;
+// here Ramadan
+use App\Apriori_g;
 use App\AprioriG;
 use App\Gproduct;
 use App\interest;
@@ -46,7 +49,6 @@ class AjaxController extends Controller
 
 
     }
-
 
 
 
@@ -103,6 +105,11 @@ class AjaxController extends Controller
 
 
     public function create(Request $request) {
+
+
+// return response()->json("heelo", 200);
+
+
         //check if its our form
        /* if ( Session::token() !== $request['_token']) {
             return Response::json( array(
@@ -172,27 +179,34 @@ class AjaxController extends Controller
 
 
         $country=$data; //here we can use Geolocation API to be used to indicate the visiter location
-            $transactions2=gproduct::where('country','=',$country)->take(1000)->get();  // for not slowing speed
+            $transactions2=gproduct::where('country','=','iraq')->take(1000)->get();  // for not slowing speed
+            // dd($transactions2[0]['title2']);
 
             $dataset2= array();
                 foreach($transactions2 as $t){
                         //array_push($dataset,$t['title']);
-                        $dataset2[]=array($t['title2']);                              //notice title2
+                        $dataset2[]=array($t['title2']);
+                                                    //notice title2 of gproducts :)
                     }
-        // dd($dataset);
+    //  dd($dataset2);
             $Apriori2->process($dataset2);  // send them to apriori
 
         // to empty the table and insert new apriori products
-            AprioriG::truncate(); //the name of the class
-
+            // AprioriG::truncate(); //the name of the class
+            Apriori_g::truncate(); //the name of the class Ramadan
+// use App\apriori_g;
 
         $A2=array();
 
         $A2=$Apriori2->getAssociationRules();
+
+        // dd($A2);
             foreach ($A2 as $sectionKey => $lines2) {
 
                   foreach ($lines2 as $key => $value) {
-                    $a=new AprioriG();        // to store the results in this table
+
+                    //$a=new AprioriG();        // to store the results in this table
+                    $a=new Apriori_g();
                     $a->brought=$sectionKey;
                     $a->recommend=$key;
                     $a->confidence=$value;
@@ -228,7 +242,7 @@ class AjaxController extends Controller
             $transaction=new Transaction(); // to send it to search it for recommended products
             $pi_product=new pi_product();
             $products_obj=new Product();
-            $aprioriG=new AprioriG();
+            $apriori_g=new Apriori_g();
             $gproduct=new Gproduct();
 
             /*--------------------------------------------------*/
@@ -246,16 +260,17 @@ class AjaxController extends Controller
 
 
             /*for recommending from gproducts and AprioriG tables to be by country recommendation*/
+
             Recommend2::bought_user_by_id($transaction, $userId);//also using transaction table bz I know it's id
             // above line will get all things user had purchased.
             $pp=Recommend2::$bought_products;
 
-            Recommend2::recommend_products($aprioriG,$pp);//aprioriG has all the appriori tables that has only iraqis product for instance.
+            Recommend2::recommend_products($apriori_g,$pp);//apriori_g has all the appriori tables that has only iraqies product for instance.
             Recommend2::get_recommended_products($products_obj);//searching in product table
             //above line, to get full information about the recommended products.
             $recommended_items2=Recommend2::$recommended_items;
 
-           //dd( $recommended_items2);
+          //  dd( $recommended_items2);
 
 
 /*            return view('shop.index', [

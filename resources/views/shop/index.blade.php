@@ -14,13 +14,15 @@
  <!--  to put the path of the route that will serve the ajax call -->
     <script>
         var url="{{route('createAjax')}}";
-
+// alert(url);
 
     </script>
 
 @endsection
 @section('content')
 @include('partials.carousel')
+
+
 <!----------------------------------------search form ---------------------------------------- -->
 
 
@@ -74,80 +76,82 @@
     @endif
 
 <!------------------to view products according to geolocation of the user using Ajax call-->
-
-  <div class="row" id="geolocation">
+<h3 id='title'></h3>
+  <div class="row equal" id="geolocation">
 
     <div id="gif" class="col-xs-6 col-xs-offset-5">
 
-        <img class="text-center" id="gif" src="ajax-loader.gif" alt="ajax-loader">
+        <img class="text-center img-responsive" width="50px" height="50px" id="gif" src="ajax-loader.gif" alt="ajax-loader">
 
     </div>
 
 
   </div>
+  <hr>
+
+
+
+<!-- hidden div -->
 
 
 
    <!--recommending products for the logged in user--------------------------------------------->
- @if(!empty($recommended_items)))
-<p><ul><h4 style="color:Orange;"><b>Recommended for you</b></h4></ul></p>
-
-        <div class="row equal">
-            @foreach($recommended_items as $item)
-
-               @foreach($item as $product)
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="thumbnail">
-                        <img src="{{ $product->imagePath }}" alt="..." class="img-responsive">
-                        <div class="caption">
-                            <h3>{{ $product->title }}</h3>
-                            <p class="description">{!!html_entity_decode(str_limit($product->description, $limit = 100, $end = '...   ')) !!}</p>
 
 
+   @if(!empty($recommended_items))
 
-                        <hr>
-                               <div class="clearfix">
-                                   <div class="row">
-                                       <div class="col-xs-12 col-sm-4 ">
-                                          <div class="pull-left price">${{ $product->price }}</div>
+   <h4 style="color:Orange;"><b>Recommended for you!!</b></h4>
 
-                                       </div>
-                                        <div class="col-xs-12 col-sm-4 ">
-                                           <a href="{{ route('product.addToCart', ['id' => $product->id]) }}"
-                                       class="btn btn-success pull-right" role="button">Add to Cart</a>
+           <div class="row equal">
+  @foreach($recommended_items as $item)
+                  @foreach($item as $product)
+                   <div class="col-sm-6 col-md-4 col-lg-3">
+                       <div class="thumbnail">
+                           <img src="{{ $product->imagePath }}" alt="..." class="img-responsive">
+                           <div class="caption">
+                               <h3>{{ $product->title }}</h3>
+                               <div class="description">{{ strip_tags(str_limit($product->description, $limit = 100, $end = '...   ')) }}
+                               </div>
+                                    <div class="clearfix">
+                                  <div class="row">
+                                    <div class="price">
+                                      <span class="badge-success badge">${{ $product->price }}</span>
+                                    </div>
+                                       <div class="col-xs-6 col-sm-6 ">
+                                          <a href="{{ route('product.addToCart', ['id' => $product->id]) }}"
+                                      class="btn btn-success pull-right" role="button">Add to Cart</a>
 
-                                       </div>
+                                      </div>
 
-                                        <div class=" col-xs-12 col-sm-4 ">
-                                           <a href="{{ route('product.details', ['id' => $product->id]) }}"
-                                       class="btn btn-warning pull-right" role="button">details</a>
+                                       <div class="col-xs-6 col-sm-6 ">
+                                          <a href="{{ route('product.details', ['id' => $product->id]) }}"
+                                      class="btn btn-warning pull-right" role="button">details</a>
 
-                                       </div>
+                                      </div>
 
-                                   </div>
-
-
-                            </div>
+                                  </div>
 
 
+                               </div>
+                           </div>
+                       </div>
 
-                        </div>
+                   </div>
+                   @endforeach
+                   @endforeach
+
+           </div>
+
+     @endif
 
 
-                    </div>
 
-                </div>
-                @endforeach
-            @endforeach
-        </div>
-
-  @endif
 
 
 <hr>
 
     <!--recommending products for the logged in user from by country --------------------------------------------->
- @if(!empty($recommended_items2))
+<!--  @if(!empty($recommended_items2))
 
 <p><ul><h4 style="color:Orange;"><b>Recommended for you from your country</b></h4></ul></p>
 
@@ -191,7 +195,7 @@
             @endforeach
         </div>
 
-  @endif
+  @endif -->
 
 
 <hr>
@@ -206,48 +210,16 @@
 
     <!--recommending products for the most visited products ------------------------------->
 
- @if(!empty($gmv_products))
-<p><ul><h4 style="color:Orange;"><b>Most visited Products</b></h4></ul></p>
-
-        <div class="row equal">
-               @foreach($gmv_products as $product)
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="thumbnail">
-                        <img src="{{ $product->imagePath }}" alt="..." class="img-responsive">
-                        <div class="caption">
-                            <h3>{{ $product->title }}</h3>
-                            <p class="description">{!!html_entity_decode(str_limit($product->description, $limit = 100, $end = '...   ')) !!}</p>
-                                <div class="clearfix">
-                               <div class="row">
-                                   <div class="col-xs-12 col-sm-4 ">
-                                      <div class="pull-left price">${{ $product->price }}</div>
-
-                                   </div>
-                                    <div class="col-xs-12 col-sm-4 ">
-                                       <a href="{{ route('product.addToCart', ['id' => $product->id]) }}"
-                                   class="btn btn-success pull-right" role="button">Add to Cart</a>
-
-                                   </div>
-
-                                    <div class=" col-xs-12 col-sm-4 ">
-                                       <a href="{{ route('product.details', ['id' => $product->id]) }}"
-                                   class="btn btn-warning pull-right" role="button">details</a>
-
-                                   </div>
-
-                               </div>
 
 
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-                @endforeach
+ <!-- here are the code paste in in desktop  -->
 
-        </div>
 
-  @endif
+
+
+
+
 
 
 <hr>
@@ -279,7 +251,8 @@
                          <img src="{{ $product->imagePath }}" alt="..." class="img-responsive">
                          <div class="caption">
                              <h3>{{ $product->title }}</h3>
-                             <div class="description">{{ strip_tags(str_limit($product->description, $limit = 100, $end = '...   ')) }}</div>
+                             <div class="description">{{ strip_tags(str_limit($product->description, $limit = 100, $end = '...   ')) }}
+                             </div>
                                   <div class="clearfix">
                                 <div class="row">
                                   <div class="price">
@@ -310,15 +283,6 @@
          </div>
 
    @endif
-
-
-
-
-
-
-
-
-
 
 
 

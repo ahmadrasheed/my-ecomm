@@ -68,7 +68,7 @@ class ProductController extends Controller
         $Apriori2->setMinConf(50);       //Minimum confidence - Percent 1, 2, ..., 100
         $Apriori2->setDelimiter(',');    //Delimiter
 
-        $country="usa"; //here we can use Geolocation API to be used to indicate the visiter location
+        $country="iraq"; //here we can use Geolocation API to be used to indicate the visiter location
             $transactions2=gproduct::where('country','=',$country)->take(1000)->get();  // for not slowing speed
 
             $dataset2= array();
@@ -289,14 +289,15 @@ class ProductController extends Controller
 
             }
                     $transaction=new Transaction();
-                    $transaction->title= rtrim($itemsString,',');
-                    // for sending it to google analytics
-                    $googleProduct=rtrim($itemsString,',');
-
+                    $transaction->title= rtrim($itemsString,','); //we used rtrim again to remove the upper right comma
                     $transaction->product_id=rtrim($itemsString2,',');
                     $transaction->description="just descriptions";
                     $transaction->user_id=$userId;
                     $transaction->save();
+
+                      // for sending it to google analytics
+                    $googleProduct=rtrim($itemsString,',');
+
 
                  ///////////////////////////////////////////
 

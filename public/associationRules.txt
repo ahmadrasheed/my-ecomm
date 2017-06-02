@@ -1,8 +1,4 @@
-kali => camera = 75%
-servers => Router = 62.5%
-Router => servers = 83.33%
-labtop => bmw = 100%
-bmw => labtop = 50%
-screen,keyboard => camera = 66.67%
-screen,camera => keyboard = 50%
-keyboard,camera => screen = 50%
+HP laptop => router = 75%
+router => HP laptop = 60%
+Charger => iPhone7 = 66.67%
+iPhone7_case => iPhone7 = 100%

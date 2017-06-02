@@ -1,6 +1,3 @@
-{screen,Router} = 2
-{keyboard,servers} = 2
-{kali,camera} = 3
-{Router,servers} = 5
-{bmw,screen} = 2
-{screen,keyboard,camera} = 2
+{router,HP laptop} = 3
+{Charger,iPhone7} = 2
+{iPhone7,router} = 2
