@@ -70,7 +70,7 @@ function errorFunction(){
 
         if(typeof country !== "undefined"){
             //variable exists, do what you want
-            alert("this is "+country);
+            // alert("this is "+country);
             // IQ will be sent not Iraq
 
           // the route of the controller that will serve the ajax request
@@ -140,7 +140,7 @@ some  ajax  functions implementation below by me
 			}
 			function onSuccess(data, status, xhr)
 			{
-        alert("from sucess ");
+        // alert("from sucess ");
 				// with our success handler, we're just logging the data...
 				console.log(data, status, xhr);
 
@@ -201,8 +201,9 @@ some  ajax  functions implementation below by me
 
                 }
                 else {
+                  $("#gif").remove();
 
-                    $("#geolocation").append("NO data has been found !!!!!!!!!!!!!");
+                    $("#geolocation").append("NO data has been found !");
 
                 }
 

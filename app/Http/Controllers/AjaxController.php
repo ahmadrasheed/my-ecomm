@@ -171,7 +171,7 @@ class AjaxController extends Controller
 
         $Apriori2->setMaxScan(20);       //Scan 2, 3, ...
         $Apriori2->setMinSup(2);         //Minimum support 1, 2, 3, ...
-        $Apriori2->setMinConf(50);       //Minimum confidence - Percent 1, 2, ..., 100
+        $Apriori2->setMinConf(20);       //Minimum confidence - Percent 1, 2, ..., 100
         $Apriori2->setDelimiter(',');    //Delimiter
 
         $data=$request->input('payload');
@@ -261,7 +261,7 @@ class AjaxController extends Controller
 
             /*for recommending from gproducts and AprioriG tables to be by country recommendation*/
 
-            Recommend2::bought_user_by_id($transaction, $userId);//also using transaction table bz I know it's id
+            Recommend2::bought_user_by_id($transaction, $userId);//also using transaction table bz I know user's id
             // above line will get all things user had purchased.
             $pp=Recommend2::$bought_products;
 

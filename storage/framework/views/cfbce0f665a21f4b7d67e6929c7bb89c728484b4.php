@@ -89,7 +89,7 @@
                 if(Session::has('googleProduct')){
 
                      echo "var googleProduct="."'".Session::get('googleProduct')."'".";";
-                     //Session::forget('googleProduct');
+                     Session::forget('googleProduct');
 
                 }
 
@@ -100,8 +100,35 @@
            ga('set', 'dimension4', googleProduct);
             console.log(googleProduct);
         }
+// ecommerce google analytics
+ga('require', 'ecommerce');
 
 
+if (typeof googleProduct !== 'undefined') {
+
+    console.log("hey"+googleProduct);
+
+
+ga('ecommerce:addTransaction', {
+  'id': '12345',                     // Transaction ID. Required.
+//   'affiliation': 'Acme Clothing',   // Affiliation or store name.
+//   'revenue': '11.99',               // Grand Total.
+//   'shipping': '5',                  // Shipping.
+//   'tax': '1.29'                     // Tax.
+});
+
+
+ga('ecommerce:addItem', {
+  'id': '12345',                     // Transaction ID. Required.
+  'name': googleProduct,    // Product name. Required.
+  // 'sku': 'DD23444',                 // SKU/code.
+  // 'category': 'Party Toys',         // Category or variation.
+  // 'price': '11.99',                 // Unit price.
+  // 'quantity': '1'                   // Quantity.
+});
+
+ga('ecommerce:send');
+}
 
 ga('send', 'pageview',{'sessionControl': 'start'});
 </script>

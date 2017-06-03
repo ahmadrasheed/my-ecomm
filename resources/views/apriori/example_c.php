@@ -17,7 +17,7 @@ use App\AprioriG;
 
 
 
-include(app_path() . '\MyApp\Apriori\Apriori.php');    
+include(app_path() . '\MyApp\Apriori\Apriori.php');
 
 
 ///////////////////////////////////above by Me //////////////////
@@ -30,7 +30,7 @@ $Apriori = new Apriori();
 
 $Apriori->setMaxScan(20);       //Scan 2, 3, ...
 $Apriori->setMinSup(2);         //Minimum support 1, 2, 3, ...
-$Apriori->setMinConf(50);       //Minimum confidence - Percent 1, 2, ..., 100
+$Apriori->setMinConf(20);       //Minimum confidence - Percent 1, 2, ..., 100
 $Apriori->setDelimiter(',');    //Delimiter
 
 

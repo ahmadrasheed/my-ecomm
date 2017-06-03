@@ -1,4 +1,16 @@
-HP laptop => router = 75%
+head scarf => handbags = 20.83%
+head scarf => shoes = 62.5%
+handbags => head scarf = 31.25%
+handbags => shoes = 25%
+handbags => woman_hat = 37.5%
+shoes => head scarf = 27.78%
+shoes => woman_hat = 62.96%
 router => HP laptop = 60%
-Charger => iPhone7 = 66.67%
-iPhone7_case => iPhone7 = 100%
+HP laptop => router = 60%
+iPhone7 => Charger = 40%
+iPhone7 => iPhone7_case = 40%
+Charger => iPhone7 = 40%
+iPhone7_case => iPhone7 = 50%
+woman_hat => shoes = 85%
+handbags,woman_hat => shoes = 33.33%
+handbags,shoes => woman_hat = 50%

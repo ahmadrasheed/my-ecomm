@@ -1,3 +1,6 @@
-{router,HP laptop} = 3
-{Charger,iPhone7} = 2
-{iPhone7,router} = 2
+{handbags,head scarf} = 5
+{shoes,head scarf} = 15
+{HP laptop,router} = 3
+{Charger,handbags} = 2
+{iPhone7_case,handbags} = 2
+{handbags,woman_hat,shoes} = 2

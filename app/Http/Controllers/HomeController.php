@@ -11,7 +11,7 @@
             // $from_date = date("Y-m-d", strtotime($request->get('from_date',"30 days ago")));
             // $to_date = date("Y-m-d",strtotime($request->get('to_date',$request->get('from_date','2016-12-05')))) ;
             $from_date = date("Y-m-d", strtotime($request->get('from_date',"2017-05-29")));
-            $to_date = date("Y-m-d",strtotime($request->get('to_date',$request->get('from_date','2017-06-1')))) ;
+            $to_date = date("Y-m-d",strtotime($request->get('to_date',$request->get('from_date','2017-06-3')))) ;
             $gAData = $this->gASummary($from_date,$to_date) ;
             return $gAData;
         }
@@ -130,7 +130,7 @@
 
 // 'dimensions' => 'ga:dimension3,ga:country',
             $optParams = [
-                'dimensions' => 'ga:dimension4,ga:country',
+                'dimensions' => 'ga:productName,ga:country',
                 /*'sort'=>'-ga:date'*/
                 /*'sort'=>'ga:pagePath'*/
             ] ;
@@ -140,7 +140,9 @@
                $date_from,
                "today",              /*very necessary to put the date here*/
 
-                'ga:hits',
+                // 'ga:hits',
+                'ga:uniquePurchases',
+
                $optParams
                );
               $rows = $results->getRows();
@@ -164,15 +166,18 @@
                         $gmv->hits=$rows[$j][$i+1];
                         $gmv->save();
           }}*/
-
+            Gproduct::truncate(); // to emptyfiy the Gproduct table
 
             foreach ($rows as $row) {
+              for($i=0;$i<$row[2];$i++){
+
                         $gproduct=new Gproduct();
                         $gproduct->product_id=$row[0];
                         $gproduct->title2=$row[0];
                         $gproduct->country=$row[1];
 
                         $gproduct->save();
+                        }
 
                     }
 
