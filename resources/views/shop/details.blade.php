@@ -16,7 +16,9 @@
 
                 <div class="col-sm-6 col-md-4 col-lg-12">
                     <div class="thumbnail">
-                        <img src="{{URL::to($productD->imagePath)}}" alt="..." class="img-responsive">
+
+                        <!-- <img src="{{URL::to($productD->imagePath)}}" alt="..." class="img-responsive"> -->
+                        <img src="{!! html_entity_decode ($productD->imagePath )!!}" alt="..." class="img-responsive">
                         <div class="caption">
                             <h3>{{ $productD->title }}</h3>
 

@@ -39,7 +39,7 @@ document.addEventListener('visibilitychange', function () {
 
 /*======================================= battery API by W3C ==============================*/
 
-
+  //geolocation();
 
 battery();
                               /*battery code API by w3c specification*/
@@ -50,9 +50,11 @@ function battery(){
 
     //support detecting ...
         if (window.navigator && window.navigator.battery) {
+          alert("yes battery");
                // Grab the battery's information!
             } else {
                // Not supported
+               alert("Not supported");
             }
 
 
@@ -69,11 +71,12 @@ function battery(){
           batteryLevel=battery.level;
           // alert("your battery level is:"+batteryLevel);
           console.log("your battery level is:"+batteryLevel);
+          alert("your battery level is:" + batteryLevel);
 
           // important ........  ... .....
           if(batteryLevel>0.50){
 
-                geolocation(); // calling the geolocation api with ajax call
+            // geolocation(); // calling the geolocation api with ajax call
 
           }
           else{

@@ -14,7 +14,9 @@
 
                 <div class="col-sm-6 col-md-4 col-lg-12">
                     <div class="thumbnail">
-                        <img src="<?php echo e(URL::to($productD->imagePath)); ?>" alt="..." class="img-responsive">
+
+                        <!-- <img src="<?php echo e(URL::to($productD->imagePath)); ?>" alt="..." class="img-responsive"> -->
+                        <img src="<?php echo html_entity_decode ($productD->imagePath ); ?>" alt="..." class="img-responsive">
                         <div class="caption">
                             <h3><?php echo e($productD->title); ?></h3>
 

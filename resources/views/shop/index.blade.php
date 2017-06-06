@@ -107,7 +107,7 @@
                   @foreach($item as $product)
                    <div class="col-sm-6 col-md-4 col-lg-3">
                        <div class="thumbnail">
-                           <img src="{{ $product->imagePath }}" alt="..." class="img-responsive">
+                           <img src="{!!strip_tags (URL::to($product->imagePath)) !!}" alt="..." class="img-responsive hover-zoom">
                            <div class="caption">
                                <h3>{{ $product->title }}</h3>
                                <div class="description">{{ strip_tags(str_limit($product->description, $limit = 100, $end = '...   ')) }}
@@ -248,7 +248,7 @@
                 @foreach($products as $product)
                  <div class="col-sm-6 col-md-4 col-lg-3">
                      <div class="thumbnail">
-                         <img src="{{ $product->imagePath }}" alt="..." class="img-responsive">
+                         <img src="{!!URL::to($product->imagePath)!!}" alt="..." class="img-responsive">
                          <div class="caption">
                              <h3>{{ $product->title }}</h3>
                              <div class="description">{{ strip_tags(str_limit($product->description, $limit = 100, $end = '...   ')) }}

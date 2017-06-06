@@ -109,7 +109,7 @@
                   <?php foreach($item as $product): ?>
                    <div class="col-sm-6 col-md-4 col-lg-3">
                        <div class="thumbnail">
-                           <img src="<?php echo e($product->imagePath); ?>" alt="..." class="img-responsive">
+                           <img src="<?php echo strip_tags (URL::to($product->imagePath)); ?>" alt="..." class="img-responsive hover-zoom">
                            <div class="caption">
                                <h3><?php echo e($product->title); ?></h3>
                                <div class="description"><?php echo e(strip_tags(str_limit($product->description, $limit = 100, $end = '...   '))); ?>
@@ -251,7 +251,7 @@
                 <?php foreach($products as $product): ?>
                  <div class="col-sm-6 col-md-4 col-lg-3">
                      <div class="thumbnail">
-                         <img src="<?php echo e($product->imagePath); ?>" alt="..." class="img-responsive">
+                         <img src="<?php echo URL::to($product->imagePath); ?>" alt="..." class="img-responsive">
                          <div class="caption">
                              <h3><?php echo e($product->title); ?></h3>
                              <div class="description"><?php echo e(strip_tags(str_limit($product->description, $limit = 100, $end = '...   '))); ?>

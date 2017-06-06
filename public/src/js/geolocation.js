@@ -59,7 +59,7 @@ function errorFunction(){
 
 
         country=city.short_name;
-        //alert(country);
+        alert(country);
 
         //alert(city.short_name + " " + city.long_name);
 
@@ -215,3 +215,4 @@ some  ajax  functions implementation below by me
 			$('button#post').on('click', onPostClick);
 
 }
+//geolocation();
