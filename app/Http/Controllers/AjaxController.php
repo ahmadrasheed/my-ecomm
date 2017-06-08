@@ -127,6 +127,7 @@ class AjaxController extends Controller
 
 
         $data=$request->input('payload');
+        $batteryLevel=$request->input('batteryLevel');
 
         $response = array(
             'status' => 'success',
@@ -179,7 +180,9 @@ class AjaxController extends Controller
 
 
         $country=$data; //here we can use Geolocation API to be used to indicate the visiter location
-            $transactions2=gproduct::where('country','=','iraq')->take(1000)->get();  // for not slowing speed
+
+
+            $transactions2=gproduct::where('country','=',$country)->take(1000)->get();  // for not slowing speed
             // dd($transactions2[0]['title2']);
 
             $dataset2= array();
@@ -270,7 +273,7 @@ class AjaxController extends Controller
             //above line, to get full information about the recommended products.
             $recommended_items2=Recommend2::$recommended_items;
 
-          //  dd( $recommended_items2);
+        //  dd( $recommended_items2);
 
 
 /*            return view('shop.index', [
@@ -282,6 +285,11 @@ class AjaxController extends Controller
 
                                       ]);*/
 
+
+            if($batteryLevel<0.97){
+              return response()->json(array($recommended_items2[1]), 200);
+              // we have put in inside array funciton, to keep the structure (array of array ) otherwise code in index will not work 
+            }
 
 
             return response()->json($recommended_items2, 200);

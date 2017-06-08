@@ -206,8 +206,7 @@ ga('send', 'pageview',{'sessionControl': 'start'});
 
 
 
-<!-- here is battery API code, I put it here to make it the first downloaded and be global scope -->
-    <script src="{{ URL::to('src/js/battery.js') }}"></script>
+
 
 
     <!--This is to put he gelocatoin code script of API of google maps.-->
@@ -215,9 +214,12 @@ ga('send', 'pageview',{'sessionControl': 'start'});
     <!--my api key      AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM   -->
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM"></script>
 
-    <script src="{{ URL::to('src/js/geolocation.js') }}"></script>
+  
 
-
+    <!-- here is battery API code, I put it here to make it the first downloaded and be global scope -->
+        <script src="{{ URL::to('src/js/battery.js') }}"></script>
+        <!-- <script src="{{ URL::to('src/js/geolocation.js') }}"></script> -->
+        <!-- <script src="{{ URL::to('src/js/run.js') }}"></script> -->
 
 
 

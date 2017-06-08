@@ -14,7 +14,7 @@
 Route::get('/', [
     'uses' => 'ProductController@getIndex',
     'as' => 'product.index',
-    
+
 ]);
 
 
@@ -38,7 +38,7 @@ Route::post('/create', [
     'uses' => 'AjaxController@create',
     'as' => 'createAjax'
 ]);
-  //for test only
+  // for test only to try ajax call by url and manual
 // Route::get('/get', [
 //     'uses' => 'AjaxController@create',
 //     'as' => 'createAjax'

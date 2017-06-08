@@ -130,7 +130,7 @@
 
 // 'dimensions' => 'ga:dimension3,ga:country',
             $optParams = [
-                'dimensions' => 'ga:productName,ga:country',
+                'dimensions' => 'ga:productName,ga:countryIsoCode',
                 /*'sort'=>'-ga:date'*/
                 /*'sort'=>'ga:pagePath'*/
             ] ;

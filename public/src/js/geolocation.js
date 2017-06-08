@@ -1,4 +1,6 @@
-function geolocation(){
+
+
+
 
 
 
@@ -155,64 +157,49 @@ some  ajax  functions implementation below by me
                     $("#gif").remove();
 
                     // to iterate through the returned obj from the laravel controller
-                $.each( data, function( key, value ) {
-                  //alert( key + ": " + value[key]['imagePath'] );
+                    value=data;
+                for(var i=0;i<value.length;i++)
+                for(var j=0;j<value[i].length;j++)
+                {
+                  var p1="<div id='col' class='col-sm-6 col-md-4 col-lg-3 pull-left'><div class='thumbnail'><img src='";
+                  var p2=value[i][j]['imagePath'];
+                  var p3="'class='img-responsive'><div class='caption'><h3>";
+                  var p4=value[i][j]['title'];
+                  var p5="</h3> <div class='description'>";
+                  var p66=value[i][j]['description'];
+                  var p66=$(p66).text(); // to strip html tags
+                  var p6=p66.substring(0,200);
 
-                    //$('#row').append().attr('src')=value['imagePath'];
-
-
-                    var p1="<div id='col' class='col-sm-6 col-md-4 col-lg-3 pull-left'><div class='thumbnail'><img src='";
-                    var p2=value[key]['imagePath'];
-                    var p3="'class='img-responsive'><div class='caption'><h3>";
-                    var p4=value[key]['title'];
-                    var p5="</h3> <div class='description'>";
-                    var p66=value[key]['description'];
-                    var p66=$(p66).text(); // to strip html tags
-                    var p6=p66.substring(0,200);
-
-                    var p7="</div><div class='clearfix'> <div class='price'><span class='badge-success badge'>";
-                    var p8=value[key]['price'];
-                    var p9="</span></div><div class='col-xs-6 col-sm-6' ><a href='/add-to-cart/";
-                    var p10=value[key]['id'];
-                    var p11="'class='btn btn-success pull-right' role='button'>Add to Cart</a></div><div class='col-xs-6 col-sm-6'><a href='/product-details/";
-                    var p12=value[key]['id'];
-                    var p13="'class='btn btn-warning pull-right' role='button'>details</a></div></div></div></div>";
+                  var p7="</div><div class='clearfix'> <div class='price'><span class='badge-success badge'>";
+                  var p8=value[i][j]['price'];
+                  var p9="</span></div><div class='col-xs-6 col-sm-6' ><a href='/add-to-cart/";
+                  var p10=value[i][j]['id'];
+                  var p11="'class='btn btn-success pull-right' role='button'>Add to Cart</a></div><div class='col-xs-6 col-sm-6'><a href='/product-details/";
+                  var p12=value[i][j]['id'];
+                  var p13="'class='btn btn-warning pull-right' role='button'>details</a></div></div></div></div>";
 
 
-// var p6="";
+              // var p6="";
 
-                var product=p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+p11+p12+p13;
-                    console.log(product);
-                 // var  html = $.parseHTML( product );
+              var product=p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+p11+p12+p13;
+                  //console.log(product);
+               // var  html = $.parseHTML( product );
 
-
-
-                // just spare template we can remove it.
-                var x='<div class="row"><div class="col-sm-6 col-md-4"> <div class="thumbnail"><img src="image2.jpg" alt="..." class="img-responsive"><img src="image2.jpg" alt="..." class="img-responsive"><div class="caption"><h3>camera</h3> <p class="description">oT data originates remotely, often from equipment at the edge that emits analog data in industries like energy, manufacturing and utilities. Outside the traditional data center or cloud, the edge is in the field, on a plant floor, at an oil rig or copper mine&mdash;generating business, engineering and scientific insights.</p> <div class="clearfix">  <div class="pull-left price">$607</div> <a href="http://localhost:8000/add-to-cart/6" class="btn btn-success pull-right" role="button">Add to Cart</a>  &nbsp;&nbsp;&nbsp;  <a href="http://localhost:8000/product-details/6" class="btn btn-warning pull-right" role="button">details</a> </div> </div>  </div> </div> ';
-
-
-
-                $("#geolocation").append(product);
-
-
-                });
-
-
-
+$("#geolocation").append(product);
                 }
-                else {
-                  $("#gif").remove();
-
-                    $("#geolocation").append("NO data has been found !");
-
-                }
+                // for(var k=0;k<data[j].length;k++)
+                // alert(data[i][j]['title']);
 
 
-
+}
             } // end of success function
 			// listeners
 			$('button#get').on('click', onGetClick);
 			$('button#post').on('click', onPostClick);
 
-}
-//geolocation();
+
+alert(batteryLevel+"this was battery level");
+// alert("hiiii");
+ // end of geolocation function body
+
+  // geolocation();
