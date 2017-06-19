@@ -1,16 +1,19 @@
-head scarf => handbags = 20.83%
-head scarf => shoes = 62.5%
-handbags => head scarf = 31.25%
-handbags => shoes = 25%
-handbags => woman_hat = 37.5%
-shoes => head scarf = 27.78%
-shoes => woman_hat = 62.96%
+head scarf => handbags = 47.37%
+head scarf => shoes = 39.47%
+handbags => head scarf = 40%
+handbags => woman_hat = 46.67%
+shoes => head scarf = 27.27%
+shoes => woman_hat = 61.82%
 router => HP laptop = 60%
 HP laptop => router = 60%
-iPhone7 => Charger = 40%
-iPhone7 => iPhone7_case = 40%
-Charger => iPhone7 = 40%
-iPhone7_case => iPhone7 = 50%
-woman_hat => shoes = 85%
-handbags,woman_hat => shoes = 33.33%
+iPhone7 => Charger = 38.46%
+iPhone7 => iPhone7_case = 23.08%
+Charger => iPhone7 = 55.56%
+cheese => bread = 27.27%
+cheese => Milk = 27.27%
+bread => cheese = 23.08%
+iPhone7_case => iPhone7 = 37.5%
+Milk => cheese = 75%
+woman_hat => shoes = 61.82%
+woman_hat => handbags = 38.18%
 handbags,shoes => woman_hat = 50%

@@ -17,16 +17,22 @@ Route::get('/', [
 
 ]);
 
+// get Recommendation by Ajax  it should be post because ajax funciton if post type
+Route::post('/get-recommendation', [
+    'uses' => 'ProductController@getRecommendationAjax',
+    'as' => 'product.index22',
+
+]);
 
 
 
 // just for test         ajax               -----------------
-
-Route::get('/test', [
+//for scanning QR codes using test page in the root folder
+Route::get('/QR-scan', [
     'uses' => 'AjaxController@getIndex',
     'as' => 'GetAjax'
 ]);
-Route::post('/test', [
+Route::post('/QR-scan', [
     'uses' => 'AjaxController@postIndex',
     'as' => 'GetAjax'
 ]);
@@ -132,7 +138,7 @@ Route::group(['prefix' => 'user'], function () {
         Route::post('/signin', [
             'uses' => 'UserController@postSignin',
             'as' => 'user.signin'
-        ]);
+        ])->middleware('throttle:5');            ///////////     throttle      has beed set to prevent several fail login
     });
 
     Route::group(['middleware' => 'auth'], function () {

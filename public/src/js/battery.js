@@ -28,7 +28,7 @@ document.addEventListener('visibilitychange', function () {
     }
 });
 
-var batteryLevel=3;
+
 $(document).ready(function(){
 
 
@@ -51,7 +51,7 @@ $(document).ready(function(){
                // Grab the battery's information!
             } else {
                // Not supported
-               alert("Battery Not supported");
+               //alert("Battery Not supported");
             }
 
 
@@ -68,7 +68,7 @@ $(document).ready(function(){
          batteryLevel=battery.level;
 
          console.log("your battery level is:"+batteryLevel);
-         alert("your battery level is:" + batteryLevel);
+        // alert("your battery level is:" + batteryLevel);
 
           // important ........  ... .....
           if(batteryLevel>0.50){
@@ -80,16 +80,13 @@ $(document).ready(function(){
               console.log("sorry, ajax call is not recommended due to your battery level");
 
               $('#gif').fadeOut();
+              alert("battery low");
               $('.carousel').remove(); // removing the carousel
 
           }
 
 
       }
-
-
-
-
 
 
 
@@ -111,16 +108,92 @@ $(document).ready(function(){
               updateBatteryStatus(battery);
             };
 
+            // calling this funciton and send battery level as parameter its the only way.
+              getRecommendation(batteryLevel);
 
       });
 
 // end of battery function body
 
+function getRecommendation(b){
 
 
-    // battery();
+
+    // Recommending items for loged in users by Ajax with or not with a batteryLevel
 
 
+    // set up jQuery with the CSRF token, or else post routes will fail
+    $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+    var url2="get-recommendation";
+
+
+
+    // alert(batteryLevel);
+    $.post(url2, {batteryLevel:b}, onSuccess2);
+
+    function onSuccess2(data2, status2, xhr2)
+    {
+      // alert("from sucess ");
+      // with our success handler, we're just logging the data...
+      console.log("second call");
+      console.log(data2.length);
+
+      // but you can do something with it if you like - the JSON is deserialised into an object
+
+
+              if(data2[0]!=null){
+              //     var x='<p class="hidden"><ul><h4 style="color:Orange;"><b>Recommended by your country</b></h4></ul></p>';
+             $("#title2").append("Recommened for you ....<hr>");
+                  //alert(batteryLevel);
+                  $("#gif2").remove();
+
+                  // to iterate through the returned obj from the laravel controller
+                  value=data2;
+                  // alert(value.length);
+              for(var i=0;i<value.length;i++)
+              for(var j=0;j<value[i].length;j++)
+              {
+                var p1="<div id='col' class='col-sm-6 col-md-4 col-lg-3 pull-left'><div class='thumbnail'><img src='";
+                var p2=value[i][j]['imagePath'];
+                var p3="'class='img-responsive'><div class='caption'><h3>";
+                var p4=value[i][j]['title'];
+                var p5="</h3> <div class='description'>";
+                var p66=value[i][j]['description'];
+                var p66=$(p66).text(); // to strip html tags
+                var p6=p66.substring(0,200);
+
+                var p7="</div><div class='clearfix'> <div class='price'><span class='badge-success badge'>";
+                var p8=value[i][j]['price'];
+                var p9="</span></div><div class='col-xs-6 col-sm-6' ><a href='/add-to-cart/";
+                var p10=value[i][j]['id'];
+                var p11="'class='btn btn-success pull-right' role='button'>Add to Cart</a></div><div class='col-xs-6 col-sm-6'><a href='/product-details/";
+                var p12=value[i][j]['id'];
+                var p13="'class='btn btn-warning pull-right' role='button'>details</a></div></div></div></div>";
+
+
+
+
+            var product=p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+p11+p12+p13;
+
+
+       $("#geolocation2").append(product);
+                  }
+
+
+
+    }
+          } // end of success2 function
+
+
+              // ..................End of Recommending items by ajax ..................
+
+
+
+
+
+
+
+}
 
 
 
@@ -140,10 +213,12 @@ var geocoder;
 geocoder = new google.maps.Geocoder();
 
   if (navigator.geolocation) {
+
     navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
 }
 //Get the latitude and the longitude;
 function successFunction(position) {
+
     var lat = position.coords.latitude;
     var lng = position.coords.longitude;
     codeLatLng(lat, lng)
@@ -154,6 +229,7 @@ function errorFunction(){
 }
 
   function initialize() {
+
 
       //we put onload=initialize() in the body tag
     geocoder = new google.maps.Geocoder();
@@ -187,7 +263,7 @@ function errorFunction(){
 
 
         country=city.short_name;
-        alert(country);
+        //alert(country);
 
         //alert(city.short_name + " " + city.long_name);
 
@@ -203,7 +279,6 @@ function errorFunction(){
 
           // the route of the controller that will serve the ajax request
             //var url='/create';
-
 
             	// set up jQuery with the CSRF token, or else post routes will fail
 			$.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
@@ -266,11 +341,16 @@ some  ajax  functions implementation below by me
 				// we're passing data with the post route, as this is more normal
 				//$.post(url, {payload:'IQ'}, onSuccess);
 			}
+
+
+
+
 			function onSuccess(data, status, xhr)
 			{
         // alert("from sucess ");
 				// with our success handler, we're just logging the data...
-				console.log(data, status, xhr);
+        console.log("first call");
+        console.log(data, status, xhr);
 
 				// but you can do something with it if you like - the JSON is deserialised into an object
 				//console.log(String(data).toUpperCase())
@@ -284,7 +364,7 @@ some  ajax  functions implementation below by me
 
                     // to iterate through the returned obj from the laravel controller
                     value=data;
-                    alert(value.length);
+                    // alert(value.length);
                 for(var i=0;i<value.length;i++)
                 for(var j=0;j<value[i].length;j++)
                 {
@@ -312,8 +392,8 @@ some  ajax  functions implementation below by me
                   //console.log(product);
                // var  html = $.parseHTML( product );
 
-$("#geolocation").append(product);
-                }
+         $("#geolocation").append(product);
+                    }
                 // for(var k=0;k<data[j].length;k++)
                 // alert(data[i][j]['title']);
 
@@ -323,14 +403,6 @@ $("#geolocation").append(product);
 			// listeners
 			$('button#get').on('click', onGetClick);
 			$('button#post').on('click', onPostClick);
-
-
-// alert(batteryLevel+"this was battery level");
-// alert("hiiii");
- // end of geolocation function body
-
-  // geolocation();
-
 
 
 

@@ -2,6 +2,16 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <h1>Sign In</h1>
+
+<!--
+
+            <?php if(session()->has('e')): ?>
+              <div class="alert alert-danger">
+
+              </div>
+            <?php endif; ?> -->
+
+
             <?php if(count($errors) > 0): ?>
                 <div class="alert alert-danger">
                     <?php foreach($errors->all() as $error): ?>
@@ -9,6 +19,8 @@
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
+
+
             <form action="<?php echo e(route('user.signin')); ?>" method="post">
                 <div class="form-group">
                     <label for="email">E-Mail</label>
@@ -26,4 +38,5 @@
         </div>
     </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

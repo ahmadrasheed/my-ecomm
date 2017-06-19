@@ -38,12 +38,12 @@
 
                             <form class="form-inline" method="post" action="{{route('products.updateOrdelete')}}">
                                 <div class="form-group">
-                                    <span class="badge">{{0}}</span>
+                                    <!-- <span class="badge">{{0}}</span> -->
                                     <input type="text" class="form-control " value="{{$product->title}}" name="title" id="name" >
-                                    
+
                                     <input type="text" class="form-control " value="{{$product->price}} $" name="price" id="name" size="4">
-                                    
-                                    <textarea name="description"  class="form-control " rows="1" cols="40">{{$product->description}}</textarea>     
+
+                                    <textarea name="description"  class="form-control " rows="1" cols="40">{{$product->description}}</textarea>
 
 
                                     <button type="submit" name="update" class="btn btn-primary form-control">update</button>

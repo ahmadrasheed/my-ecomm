@@ -70,7 +70,7 @@
 
                             <form class="form-inline" method="post" action="{{route('products.updateOrdelete')}}">
                                 <div class="form-group">
-                                    <span class="badge">{{6}}</span>
+                                    <!-- <span class="badge">{{6}}</span> -->
                                     <input type="text" class="form-control " value="{{$product->title}}" name="title" id="name" >
                                     <input type="text" class="form-control " value="{{$product->price}} $" name="price" id="name" size="4">
 

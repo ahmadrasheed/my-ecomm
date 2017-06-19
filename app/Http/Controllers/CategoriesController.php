@@ -34,14 +34,20 @@ class CategoriesController extends Controller
 
         if(isset($data['update'])){
 
+          $this->validate($request, [
+              'name' => 'bail|required|unique:categories|max:255',
+              // 'body' => 'required',
+          ]);
+
+
             $category->name=$request->input('name');
             $category->update();
             return redirect()->back();
         }
-        
-          
+
+
            if(isset($data['view'])){
-              
+
             $category=Category::find($request->input('id'));
                 $products=$category->products;
                 $category_name=$category->name;
@@ -55,15 +61,22 @@ class CategoriesController extends Controller
 
         ]);
         }
-        
-        
-        
-        
-        
+
+
+
+
+
 
     }
 
     public function postAdd(Request $request){
+
+      $this->validate($request, [
+          'name' => 'bail|required|unique:categories|max:255',
+          // 'body' => 'required',
+      ]);
+
+
         $data=$request->all();
 
         if(isset($data['add'])){

@@ -85,9 +85,6 @@ class AjaxController extends Controller
         return response()->json($productD, 200);
 
 
-
-
-
     }
 
 
@@ -285,10 +282,10 @@ class AjaxController extends Controller
 
                                       ]);*/
 
-
+            //battery level
             if($batteryLevel<0.97){
-              return response()->json(array($recommended_items2[1]), 200);
-              // we have put in inside array funciton, to keep the structure (array of array ) otherwise code in index will not work 
+              return response()->json(array($recommended_items2[0]), 200);
+              // we have put in inside array funciton, to keep the structure (array of array ) otherwise code in index will not work
             }
 
 

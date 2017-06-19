@@ -60,7 +60,11 @@ class UserController extends Controller
             }
             return redirect()->route('user.profile');
         }
-        return redirect()->back();
+        $e="Wrong!, please try again";
+        // Session::set('e', $e);
+
+        // dd($e);
+        return redirect()->back()->withErrors(compact('e'));
     }
 
     public function getProfile() {
@@ -71,7 +75,7 @@ class UserController extends Controller
         });
         return view('user.profile', ['orders' => $orders]);
     }
-    
+
     public function getLogout() {
         Auth::logout();
         return redirect()->route('user.signin');

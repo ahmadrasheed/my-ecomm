@@ -99,59 +99,23 @@
 
    <!--recommending products for the logged in user--------------------------------------------->
 
+<h3 id='title2'></h3>
+   <div class="row equal" id="geolocation2">
 
-   <?php if(!empty($recommended_items)): ?>
+     <div id="gif2" class="col-xs-6 col-xs-offset-5">
 
-   <h4 style="color:Orange;"><b>Recommended for you!!</b></h4>
+         <img class="text-center img-responsive" width="50px" height="50px" id="gif" src="ajax-loader.gif" alt="ajax-loader">
 
-           <div class="row equal">
-  <?php foreach($recommended_items as $item): ?>
-                  <?php foreach($item as $product): ?>
-                   <div class="col-sm-6 col-md-4 col-lg-3">
-                       <div class="thumbnail">
-                           <img src="<?php echo strip_tags (URL::to($product->imagePath)); ?>" alt="..." class="img-responsive hover-zoom">
-                           <div class="caption">
-                               <h3><?php echo e($product->title); ?></h3>
-                               <div class="description"><?php echo e(strip_tags(str_limit($product->description, $limit = 100, $end = '...   '))); ?>
-
-                               </div>
-                                    <div class="clearfix">
-                                  <div class="row">
-                                    <div class="price">
-                                      <span class="badge-success badge">$<?php echo e($product->price); ?></span>
-                                    </div>
-                                       <div class="col-xs-6 col-sm-6 ">
-                                          <a href="<?php echo e(route('product.addToCart', ['id' => $product->id])); ?>"
-                                      class="btn btn-success pull-right" role="button">Add to Cart</a>
-
-                                      </div>
-
-                                       <div class="col-xs-6 col-sm-6 ">
-                                          <a href="<?php echo e(route('product.details', ['id' => $product->id])); ?>"
-                                      class="btn btn-warning pull-right" role="button">details</a>
-
-                                      </div>
-
-                                  </div>
+     </div>
 
 
-                               </div>
-                           </div>
-                       </div>
-
-                   </div>
-                   <?php endforeach; ?>
-                   <?php endforeach; ?>
-
-           </div>
-
-     <?php endif; ?>
+   </div>
 
 
 
+   <!-- End of recommending products for the logged in user -->
 
 
-<hr>
 
     <!--recommending products for the logged in user from by country --------------------------------------------->
 <!--  <?php if(!empty($recommended_items2)): ?>
@@ -201,7 +165,6 @@
   <?php endif; ?> -->
 
 
-<hr>
 
 
 
@@ -225,7 +188,7 @@
 
 
 
-<hr>
+
 
 <!--------------------------------------------------------------------------------------------->
 
@@ -234,7 +197,7 @@
 
 
 
-
+<hr>
  <!-- displaying products from the databse  without recommending -->
 
 

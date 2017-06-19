@@ -17,9 +17,9 @@
 
 
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
     <link rel="stylesheet" href="{{ URL::to('font-awesome/css/font-awesome.min.css') }}">
 
     <link rel="stylesheet" href="{{ URL::to('css/bootstrap.min.css') }}">
@@ -214,16 +214,14 @@ ga('send', 'pageview',{'sessionControl': 'start'});
     <!--my api key      AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM   -->
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCqrqwYfuzVyIFs5FWXZdkSgtoJfpniAkM"></script>
 
-  
+
 
     <!-- here is battery API code, I put it here to make it the first downloaded and be global scope -->
         <script src="{{ URL::to('src/js/battery.js') }}"></script>
         <!-- <script src="{{ URL::to('src/js/geolocation.js') }}"></script> -->
         <!-- <script src="{{ URL::to('src/js/run.js') }}"></script> -->
 
-
-
-
+        
 
 </div>
 </body>

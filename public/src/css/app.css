@@ -117,7 +117,7 @@ img:hover {
     }
 
     #myCarousel{
-        display:none !important;
+        /*display:none !important;*/
 
     }
 }

@@ -70,7 +70,7 @@
 
                             <form class="form-inline" method="post" action="<?php echo e(route('products.updateOrdelete')); ?>">
                                 <div class="form-group">
-                                    <span class="badge"><?php echo e(6); ?></span>
+                                    <!-- <span class="badge"><?php echo e(6); ?></span> -->
                                     <input type="text" class="form-control " value="<?php echo e($product->title); ?>" name="title" id="name" >
                                     <input type="text" class="form-control " value="<?php echo e($product->price); ?> $" name="price" id="name" size="4">
 
